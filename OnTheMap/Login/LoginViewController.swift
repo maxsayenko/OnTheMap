@@ -34,8 +34,27 @@ class LoginViewController: UIViewController {
             if error != nil { // Handle error…
                 return
             }
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            /* subset response data! */
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            
+            var parsedData: AnyObject
+            
+            do {
+                parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+            } catch {
+                print("Error in parsing JSON \(error)")
+                return
+            }
+            
+            if let accountKey = parsedData["account"]!!["key"] as? String,
+                let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
+                let sessionId = parsedData["session"]!!["id"] as? String {
+                    let t = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
+                    print(t)
+            }
+            
+            print(parsedData)
+            
             performUIUpdatesOnMain({ () -> Void in
                 self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
             })

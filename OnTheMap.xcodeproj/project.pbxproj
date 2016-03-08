@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E247E03D1C8EB889003358F1 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* StudentsTableViewController.swift */; };
+		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C41C7EE4330016460F /* AppDelegate.swift */; };
 		E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C61C7EE4330016460F /* LoginViewController.swift */; };
 		E2F063CA1C7EE4330016460F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F063C81C7EE4330016460F /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		E247E03C1C8EB889003358F1 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
+		E247E03F1C8EBE84003358F1 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		E2F063C11C7EE4330016460F /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F063C41C7EE4330016460F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2F063C61C7EE4330016460F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		E247E03E1C8EBE5E003358F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E247E03F1C8EBE84003358F1 /* UdacityUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E2F063B81C7EE4330016460F = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		E2F063C31C7EE4330016460F /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				E247E03E1C8EBE5E003358F1 /* Models */,
 				E247E03B1C8EB848003358F1 /* TabBar */,
 				E247E03A1C8EB83F003358F1 /* Login */,
 				E2F063C41C7EE4330016460F /* AppDelegate.swift */,
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */,
 				E2FCCC741C8B7D8B00F553F2 /* GDC.swift in Sources */,
 				E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */,
 				E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */,
