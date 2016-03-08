@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E247E03D1C8EB889003358F1 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* StudentsTableViewController.swift */; };
 		E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C41C7EE4330016460F /* AppDelegate.swift */; };
 		E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C61C7EE4330016460F /* LoginViewController.swift */; };
 		E2F063CA1C7EE4330016460F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F063C81C7EE4330016460F /* Main.storyboard */; };
 		E2F063CC1C7EE4330016460F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2F063CB1C7EE4330016460F /* Assets.xcassets */; };
 		E2F063CF1C7EE4330016460F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F063CD1C7EE4330016460F /* LaunchScreen.storyboard */; };
+		E2FCCC741C8B7D8B00F553F2 /* GDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCCC731C8B7D8B00F553F2 /* GDC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E247E03C1C8EB889003358F1 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
 		E2F063C11C7EE4330016460F /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F063C41C7EE4330016460F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2F063C61C7EE4330016460F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		E2F063CB1C7EE4330016460F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2F063CE1C7EE4330016460F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2F063D01C7EE4330016460F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2FCCC731C8B7D8B00F553F2 /* GDC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E247E03A1C8EB83F003358F1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E2F063C61C7EE4330016460F /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E247E03B1C8EB848003358F1 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E247E03C1C8EB889003358F1 /* StudentsTableViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		E2F063B81C7EE4330016460F = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +74,10 @@
 		E2F063C31C7EE4330016460F /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				E247E03B1C8EB848003358F1 /* TabBar */,
+				E247E03A1C8EB83F003358F1 /* Login */,
 				E2F063C41C7EE4330016460F /* AppDelegate.swift */,
-				E2F063C61C7EE4330016460F /* LoginViewController.swift */,
+				E2FCCC731C8B7D8B00F553F2 /* GDC.swift */,
 				E2F063C81C7EE4330016460F /* Main.storyboard */,
 				E2F063CB1C7EE4330016460F /* Assets.xcassets */,
 				E2F063CD1C7EE4330016460F /* LaunchScreen.storyboard */,
@@ -135,8 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2FCCC741C8B7D8B00F553F2 /* GDC.swift in Sources */,
 				E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */,
 				E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */,
+				E247E03D1C8EB889003358F1 /* StudentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +308,7 @@
 				E2F063D51C7EE4330016460F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

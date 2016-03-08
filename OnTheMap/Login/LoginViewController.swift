@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet var emailText: UITextField!
     
     @IBOutlet var passwordText: UITextField!
@@ -36,7 +36,11 @@ class LoginViewController: UIViewController {
             }
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            performUIUpdatesOnMain({ () -> Void in
+                self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+            })
         }
+        
         task.resume()
     }
 }
