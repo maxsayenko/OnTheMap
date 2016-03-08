@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     }
     
     func getSession(email: String, password: String) {
-        guard (!email.isEmpty || !password.isEmpty) else {
+        guard (!email.isEmpty && !password.isEmpty) else {
             print("Error")
             return
         }

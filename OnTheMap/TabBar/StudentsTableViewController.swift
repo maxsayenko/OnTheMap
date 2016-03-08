@@ -15,7 +15,7 @@ class StudentsTableViewController: UITableViewController {
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
+            if (error != nil) { // Handle error...
                 return
             }
             print(NSString(data: data!, encoding: NSUTF8StringEncoding))
