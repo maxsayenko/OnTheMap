@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
             if error != nil { // Handle error…
                 return
             }
+            
             /* subset response data! */
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
             
@@ -49,11 +50,9 @@ class LoginViewController: UIViewController {
             if let accountKey = parsedData["account"]!!["key"] as? String,
                 let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
                 let sessionId = parsedData["session"]!!["id"] as? String {
-                    let t = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
-                    print(t)
+                    let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
+                    print(user)
             }
-            
-            print(parsedData)
             
             performUIUpdatesOnMain({ () -> Void in
                 self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
