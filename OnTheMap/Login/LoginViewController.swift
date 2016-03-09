@@ -19,46 +19,23 @@ class LoginViewController: UIViewController {
     }
     
     func getSession(email: String, password: String) {
-        guard (!email.isEmpty && !password.isEmpty) else {
-            print("Error")
-            return
-        }
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error…
+        UdacityNetworkHelper.getUdacitySession(email, password: password) { data, errorString in
+            if let errorMessage = errorString where errorString != nil {
+                // TODO: SHow alert view contrlr
+                print(errorMessage)
                 return
             }
             
-            /* subset response data! */
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-            
-            var parsedData: AnyObject
-            
-            do {
-                parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                print("Error in parsing JSON \(error)")
-                return
-            }
-            
-            if let accountKey = parsedData["account"]!!["key"] as? String,
-                let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
-                let sessionId = parsedData["session"]!!["id"] as? String {
+            if let accountKey = data!["account"]!!["key"] as? String,
+                let sessionExpiration = data!["session"]!!["expiration"] as? String,
+                let sessionId = data!["session"]!!["id"] as? String {
                     let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
                     print(user)
+                    
+                    performUIUpdatesOnMain({ () -> Void in
+                        self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+                    })
             }
-            
-            performUIUpdatesOnMain({ () -> Void in
-                self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
-            })
         }
-        
-        task.resume()
     }
 }
