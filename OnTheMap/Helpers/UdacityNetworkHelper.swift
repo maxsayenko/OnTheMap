@@ -10,10 +10,11 @@ import Foundation
 struct UdacityNetworkHelper {
     static let EMPTY_EMAIL_PASSWORD = "Email and password are required"
     static let BAD_DATA = "Error in reading response"
+    static let UNKNOWN_ERROR = "Something went wrong"
 
-    static func getUdacitySession(email: String, password: String, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
+    static func getUdacitySession(email: String, password: String, completionHandler: (user: UdacityUser?, errorString: String?) -> Void) {
         guard (!email.isEmpty && !password.isEmpty) else {
-            completionHandler(data: nil, errorString: EMPTY_EMAIL_PASSWORD)
+            completionHandler(user: nil, errorString: EMPTY_EMAIL_PASSWORD)
             return
         }
         
@@ -28,18 +29,28 @@ struct UdacityNetworkHelper {
             do {
                 parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
             } catch {
-                completionHandler(data: nil, errorString: BAD_DATA)
+                completionHandler(user: nil, errorString: BAD_DATA)
                 return
             }
             
             // Got error response from Udacity. Terminate.
             if let error = parsedData["error"] as? String {
-                completionHandler(data: nil, errorString: error)
+                completionHandler(user: nil, errorString: error)
                 return
             }
             
-            print(parsedData)
-            print(errorString)
+            if let accountKey = parsedData["account"]!!["key"] as? String,
+                let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
+                let sessionId = parsedData["session"]!!["id"] as? String {
+                    let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
+
+                    // Got the user.
+                    completionHandler(user: user, errorString: nil)
+                    return
+            }
+            
+            // Just in case of unknown scenarios
+            completionHandler(user: nil, errorString: UNKNOWN_ERROR)
         }
     }
     

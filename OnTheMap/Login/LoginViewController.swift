@@ -19,23 +19,17 @@ class LoginViewController: UIViewController {
     }
     
     func getSession(email: String, password: String) {
-        UdacityNetworkHelper.getUdacitySession(email, password: password) { data, errorString in
+        UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
             if let errorMessage = errorString where errorString != nil {
                 // TODO: SHow alert view contrlr
-                print(errorMessage)
+                print("Login VC - \(errorMessage)")
                 return
             }
             
-            if let accountKey = data!["account"]!!["key"] as? String,
-                let sessionExpiration = data!["session"]!!["expiration"] as? String,
-                let sessionId = data!["session"]!!["id"] as? String {
-                    let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
-                    print(user)
-                    
-                    performUIUpdatesOnMain({ () -> Void in
-                        self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
-                    })
-            }
+            performUIUpdatesOnMain({ () -> Void in
+                self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+            })
+            
         }
     }
 }
