@@ -23,6 +23,11 @@ class LoginViewController: UIViewController {
             if let errorMessage = errorString where errorString != nil {
                 // TODO: SHow alert view contrlr
                 print("Login VC - \(errorMessage)")
+                performUIUpdatesOnMain({ () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
                 return
             }
             

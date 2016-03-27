@@ -68,6 +68,8 @@ struct UdacityNetworkHelper {
                 return
             }
             
+            // TODO: Put more checks for the response and presence of the data.
+            
             completionHandler(data: data, errorString: nil)
         }
         
