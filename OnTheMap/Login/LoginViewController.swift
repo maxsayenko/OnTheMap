@@ -21,12 +21,10 @@ class LoginViewController: UIViewController {
     func getSession(email: String, password: String) {
         UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
             if let errorMessage = errorString where errorString != nil {
-                // TODO: SHow alert view contrlr
-                print("Login VC - \(errorMessage)")
                 performUIUpdatesOnMain({ () -> Void in
-                    let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 })
                 return
             }
@@ -34,7 +32,6 @@ class LoginViewController: UIViewController {
             performUIUpdatesOnMain({ () -> Void in
                 self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
             })
-            
         }
     }
 }
