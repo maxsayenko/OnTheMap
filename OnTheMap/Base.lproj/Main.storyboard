@@ -65,7 +65,7 @@
         <!--On The Map-->
         <scene sceneID="LC1-Q1-GOM">
             <objects>
-                <viewController id="nVs-z6-4NQ" sceneMemberID="viewController">
+                <viewController id="nVs-z6-4NQ" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xiZ-mE-bMn"/>
                         <viewControllerLayoutGuide type="bottom" id="sgX-oj-zxo"/>
