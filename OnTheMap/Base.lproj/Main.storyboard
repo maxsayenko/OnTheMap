@@ -73,17 +73,7 @@
                     <view key="view" contentMode="scaleToFill" id="ILW-9E-HiI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ang-L8-ofy">
-                                <rect key="frame" x="137" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ang-L8-ofy" firstAttribute="centerX" secondItem="ILW-9E-HiI" secondAttribute="centerX" id="WaE-dQ-2kG"/>
-                            <constraint firstItem="ang-L8-ofy" firstAttribute="top" secondItem="xiZ-mE-bMn" secondAttribute="bottom" id="sgq-Sg-3m9"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="NV3-yL-lmt">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="ZwP-Fw-4S5"/>
@@ -100,7 +90,7 @@
         <!--On The Map-->
         <scene sceneID="3ft-jg-z9A">
             <objects>
-                <tableViewController id="Ztd-Ed-3zn" customClass="StudentsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ztd-Ed-3zn" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fNI-H4-rRG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,13 +119,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNL-pf-XcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationBar contentMode="scaleToFill" id="xed-a7-g0k">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <items>
-                        <navigationItem title="Title" id="LVk-Np-BLR"/>
-                    </items>
-                </navigationBar>
             </objects>
             <point key="canvasLocation" x="1507" y="247"/>
         </scene>
