@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E202AFD91CABB26C0050124A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202AFD81CABB26C0050124A /* Network.swift */; };
 		E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* TableViewController.swift */; };
 		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E202AFD81CABB26C0050124A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E247E03C1C8EB889003358F1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E247E03F1C8EBE84003358F1 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */,
+				E202AFD81CABB26C0050124A /* Network.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */,
 				E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */,
+				E202AFD91CABB26C0050124A /* Network.swift in Sources */,
 				E2FCCC741C8B7D8B00F553F2 /* GDC.swift in Sources */,
 				E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */,
 				E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */,

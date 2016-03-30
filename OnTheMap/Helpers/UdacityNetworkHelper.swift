@@ -11,7 +11,7 @@ struct UdacityNetworkHelper {
     static let EMPTY_EMAIL_PASSWORD = "Email and password are required"
     static let BAD_DATA = "Error in reading response"
     static let UNKNOWN_ERROR = "Something went wrong"
-
+    
     static func getUdacitySession(email: String, password: String, completionHandler: (user: UdacityUser?, errorString: String?) -> Void) {
         guard (!email.isEmpty && !password.isEmpty) else {
             completionHandler(user: nil, errorString: EMPTY_EMAIL_PASSWORD)
@@ -20,8 +20,11 @@ struct UdacityNetworkHelper {
         
         // TODO: Move Url to Config class
         let data = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}"
-        networkPostRequest("https://www.udacity.com/api/session", data: data) { data, errorString in
-            
+        let headers = [
+            "Accept" : "application/json",
+            "Content-Type" : "application/json"
+        ]
+        Network.post("https://www.udacity.com/api/session", headers: headers, data: data) { data, errorString in
             /* subset response data! */
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
             var parsedData: AnyObject
@@ -43,7 +46,7 @@ struct UdacityNetworkHelper {
                 let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
                 let sessionId = parsedData["session"]!!["id"] as? String {
                     let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
-
+                    
                     // Got the user.
                     completionHandler(user: user, errorString: nil)
                     return
@@ -52,27 +55,18 @@ struct UdacityNetworkHelper {
             // Just in case of unknown scenarios
             completionHandler(user: nil, errorString: UNKNOWN_ERROR)
         }
+
     }
     
-    private static func networkPostRequest(url: String, data: String, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
-        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            // Got an Error. Terminate.
-            if (error != nil) {
-                completionHandler(data: nil, errorString: error?.localizedDescription)
-                return
+    static func getStudentsData() {
+        let headers = [
+            "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
+            "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        ]
+        Network.get("https://api.parse.com/1/classes/StudentLocation?limit=100", headers: headers) { (data, errorString) -> Void in
+            if let newData = data as! NSData? {
+                print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             }
-            
-            // TODO: Put more checks for the response and presence of the data.
-            
-            completionHandler(data: data, errorString: nil)
         }
-        
-        task.resume()
     }
 }
