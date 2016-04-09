@@ -37,6 +37,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="LX7-gz-7hW">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -45,16 +48,20 @@
                             <constraint firstItem="EN6-v6-aZU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hfc-Xi-EOO"/>
                             <constraint firstItem="EN6-v6-aZU" firstAttribute="trailing" secondItem="Y3A-Hd-jG2" secondAttribute="trailing" id="OoX-es-AGQ"/>
                             <constraint firstItem="3oR-Ua-OuC" firstAttribute="top" secondItem="Y3A-Hd-jG2" secondAttribute="bottom" constant="14" id="THO-aH-Jj5"/>
+                            <constraint firstItem="LX7-gz-7hW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XXh-e8-wZl"/>
                             <constraint firstItem="EN6-v6-aZU" firstAttribute="leading" secondItem="Y3A-Hd-jG2" secondAttribute="leading" id="Y8O-O4-uye"/>
                             <constraint firstItem="EN6-v6-aZU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="e1P-LV-boG"/>
                             <constraint firstItem="Y3A-Hd-jG2" firstAttribute="top" secondItem="EN6-v6-aZU" secondAttribute="bottom" constant="8" symbolic="YES" id="kOn-9O-Wso"/>
                             <constraint firstItem="EN6-v6-aZU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="t9i-jb-2MT"/>
+                            <constraint firstItem="LX7-gz-7hW" firstAttribute="centerX" secondItem="3oR-Ua-OuC" secondAttribute="centerX" id="xYP-Ze-zYf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="13k-UG-iZ7"/>
                     <connections>
                         <outlet property="emailText" destination="EN6-v6-aZU" id="fK1-gX-uQj"/>
+                        <outlet property="loginBtn" destination="3oR-Ua-OuC" id="IF4-cZ-OUb"/>
                         <outlet property="passwordText" destination="Y3A-Hd-jG2" id="nVB-EK-gGu"/>
+                        <outlet property="spinner" destination="LX7-gz-7hW" id="2dM-4w-B79"/>
                         <segue destination="FM3-La-w6T" kind="modal" identifier="segueToMapTableView" modalTransitionStyle="coverVertical" id="Ibk-85-2TC"/>
                     </connections>
                 </viewController>

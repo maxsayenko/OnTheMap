@@ -17,7 +17,7 @@ class MapViewController: UIViewController {
             }
             
             SharedModel.sharedInstance.students = students
-            print(SharedModel.sharedInstance)
+            //print(SharedModel.sharedInstance)
         }
     }
 }
