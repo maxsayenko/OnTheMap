@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E202AFD91CABB26C0050124A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202AFD81CABB26C0050124A /* Network.swift */; };
-		E202AFDB1CABB4390050124A /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202AFDA1CABB4390050124A /* StudentData.swift */; };
+		E202AFDB1CABB4390050124A /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202AFDA1CABB4390050124A /* StudentInformation.swift */; };
 		E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* TableViewController.swift */; };
 		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
@@ -23,7 +23,7 @@
 
 /* Begin PBXFileReference section */
 		E202AFD81CABB26C0050124A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		E202AFDA1CABB4390050124A /* StudentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
+		E202AFDA1CABB4390050124A /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		E247E03C1C8EB889003358F1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E247E03F1C8EBE84003358F1 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				E247E03F1C8EBE84003358F1 /* UdacityUser.swift */,
-				E202AFDA1CABB4390050124A /* StudentData.swift */,
+				E202AFDA1CABB4390050124A /* StudentInformation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 				E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */,
 				E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */,
 				E292D0C81CABA32B0045750E /* MapViewController.swift in Sources */,
-				E202AFDB1CABB4390050124A /* StudentData.swift in Sources */,
+				E202AFDB1CABB4390050124A /* StudentInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

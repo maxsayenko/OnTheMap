@@ -66,6 +66,18 @@ struct UdacityNetworkHelper {
         Network.get("https://api.parse.com/1/classes/StudentLocation?limit=100", headers: headers) { (data, errorString) -> Void in
             if let newData = data as! NSData? {
                 print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+                
+                var parsedDictionary: NSDictionary
+                
+                do {
+                    parsedDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
+                } catch {
+                    print("Error in parsing JSON \(error)")
+                    return
+                }
+                
+                print("===================")
+                print(parsedDictionary)
             }
         }
     }
