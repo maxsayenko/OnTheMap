@@ -63,21 +63,24 @@ struct UdacityNetworkHelper {
             "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
             "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         ]
+        //TODO: Move to the settings
         Network.get("https://api.parse.com/1/classes/StudentLocation?limit=100", headers: headers) { (data, errorString) -> Void in
             if let newData = data as! NSData? {
-                print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-                
-                var parsedDictionary: NSDictionary
-                
+                var parsedData: NSDictionary
                 do {
-                    parsedDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
+                    parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
                 } catch {
                     print("Error in parsing JSON \(error)")
                     return
                 }
                 
-                print("===================")
-                print(parsedDictionary)
+                if let results = parsedData["results"] as! NSArray? {
+                    print(results[0])
+                    print(StudentInformation(studentInfo: results[0] as! NSDictionary))
+                    print(results.dynamicType)
+                    print(results[0].dynamicType)
+                    
+                }
             }
         }
     }
