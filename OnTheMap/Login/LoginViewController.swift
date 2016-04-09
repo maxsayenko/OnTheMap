@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            SharedModel.sharedInstance.user = user
+            
             performUIUpdatesOnMain({ () -> Void in
                 self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
             })

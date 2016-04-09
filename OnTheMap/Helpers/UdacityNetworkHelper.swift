@@ -79,7 +79,6 @@ struct UdacityNetworkHelper {
                     print(StudentInformation(studentInfo: results[0] as! NSDictionary))
                     print(results.dynamicType)
                     print(results[0].dynamicType)
-                    
                 }
             }
         }
