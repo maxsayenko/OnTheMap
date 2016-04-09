@@ -10,6 +10,14 @@ import UIKit
 
 class MapViewController: UIViewController {
     override func viewDidLoad() {
-        UdacityNetworkHelper.getStudentsData()
+        UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                print("ERROR - MapViewController \(errorMessage)")
+                return
+            }
+            
+            SharedModel.sharedInstance.students = students
+            print(SharedModel.sharedInstance)
+        }
     }
 }

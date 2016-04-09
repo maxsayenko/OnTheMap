@@ -58,7 +58,7 @@ struct UdacityNetworkHelper {
 
     }
     
-    static func getStudentsData() {
+    static func getStudentsData(completionHandler: (students: [StudentInformation]?, errorString: String?) -> Void) {
         let headers = [
             "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
             "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
@@ -75,10 +75,13 @@ struct UdacityNetworkHelper {
                 }
                 
                 if let results = parsedData["results"] as! NSArray? {
-                    print(results[0])
-                    print(StudentInformation(studentInfo: results[0] as! NSDictionary))
-                    print(results.dynamicType)
-                    print(results[0].dynamicType)
+                    
+                    let students = results.map({ (studentData) -> StudentInformation in
+                        return StudentInformation(studentInfo: results[0] as! NSDictionary)
+                    })
+                    
+                    completionHandler(students: students, errorString: nil)
+                    return
                 }
             }
         }
