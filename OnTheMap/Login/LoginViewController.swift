@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        spinner.hidden = true
+        self.setUIState(true)
     }
     
     //TODO: Block UI and show spinner while loading

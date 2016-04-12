@@ -7,17 +7,39 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
+    
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
+        setUIState(isEnabled: false)
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 print("ERROR - MapViewController \(errorMessage)")
                 return
             }
-            
+
             SharedModel.sharedInstance.students = students
-            //print(SharedModel.sharedInstance)
+            
+            performUIUpdatesOnMain({ () -> Void in
+                self.setUIState(isEnabled: true)
+            })
+        }
+    }
+    
+    func setUIState(isEnabled isEnabled: Bool) {
+        spinner.hidden = isEnabled
+        mapView.zoomEnabled = isEnabled
+        mapView.scrollEnabled = isEnabled
+        mapView.userInteractionEnabled = isEnabled
+        
+        if(isEnabled) {
+            spinner.stopAnimating()
+        } else {
+            spinner.startAnimating()
         }
     }
 }
