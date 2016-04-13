@@ -20,12 +20,13 @@ class MapViewController: UIViewController {
                 print("ERROR - MapViewController \(errorMessage)")
                 return
             }
-            
             SharedModel.sharedInstance.students = students
-            
+
             performUIUpdatesOnMain({ () -> Void in
                 self.setUIState(isEnabled: true)
-                self.addPin()
+                for info in SharedModel.sharedInstance.students! {
+                    self.addPin(studentInformation: info)
+                }
             })
         }
     }
@@ -43,13 +44,19 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addPin() {
-        print(__FUNCTION__)
-        let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.773972, -122.431297)
+    func addPin(studentInformation info: StudentInformation) {
+        guard let lat = info.latitude,
+              let long = info.longitude
+        else {
+            print("Error during dropping pin. Info = \(info)")
+            return;
+        }
+        
+        let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
         let objectAnnotation = MKPointAnnotation()
         objectAnnotation.coordinate = pinLocation
-        objectAnnotation.title = "boooo"
-        objectAnnotation.subtitle = "http://google.com"
+        objectAnnotation.title = "\(info.firstName) \(info.lastName)"
+        objectAnnotation.subtitle = info.mediaURL
         mapView.addAnnotation(objectAnnotation)
     }
 }
@@ -82,12 +89,19 @@ extension MapViewController: MKMapViewDelegate {
     
     // Tapping the annotation bubble
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print(__FUNCTION__)
-        print(control)
-        print(view)
-        print(view.annotation?.subtitle)
+        guard let annotation = view.annotation where annotation.subtitle != nil else {
+            return
+        }
+        
+        guard let urlString = annotation.subtitle! else {
+            return
+        }
+        
         if (control == view.rightCalloutAccessoryView) {
-            UIApplication.sharedApplication().openURL(NSURL(string:"http://www.apple.com")!)
+            let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:urlString)!)
+            if(!didOpen) {
+                print("Put Error Message here. Didn't open.")
+            }
         }
     }
 }
