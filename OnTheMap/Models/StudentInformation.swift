@@ -12,8 +12,8 @@ struct StudentInformation {
     var createdAt: String = ""
     var firstName: String = ""
     var lastName: String = ""
-    var latitude: Float = 0.0
-    var longitude: Float = 0.0
+    var latitude: Double? = nil
+    var longitude: Double? = nil
     var mapString: String = ""
     var mediaURL: String = ""
     var objectId: String = ""
@@ -30,10 +30,10 @@ struct StudentInformation {
         if let lastName = studentInfo["lastName"] as? String {
             self.lastName = lastName
         }
-        if let latitude = studentInfo["latitude"] as? Float {
+        if let latitude = studentInfo["latitude"] as? Double {
             self.latitude = latitude
         }
-        if let longitude = studentInfo["longitude"] as? Float {
+        if let longitude = studentInfo["longitude"] as? Double {
             self.longitude = longitude
         }
         if let mapString = studentInfo["mapString"] as? String {
