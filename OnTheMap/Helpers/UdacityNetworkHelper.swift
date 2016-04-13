@@ -77,7 +77,7 @@ struct UdacityNetworkHelper {
                 if let results = parsedData["results"] as! NSArray? {
                     
                     let students = results.map({ (studentData) -> StudentInformation in
-                        return StudentInformation(studentInfo: results[0] as! NSDictionary)
+                        return StudentInformation(studentInfo: studentData as! NSDictionary)
                     })
                     
                     completionHandler(students: students, errorString: nil)
