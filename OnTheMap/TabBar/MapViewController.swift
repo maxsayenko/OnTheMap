@@ -13,7 +13,13 @@ class MapViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
+    var overlay : UIView?
+    
     override func viewDidLoad() {
+        overlay = UIView(frame: view.frame)
+        overlay!.backgroundColor = UIColor.blackColor()
+        overlay!.alpha = 0.8
+        
         setUIState(isEnabled: false)
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
@@ -32,6 +38,10 @@ class MapViewController: UIViewController {
     }
     
     func setUIState(isEnabled isEnabled: Bool) {
+        for barItem in (tabBarController?.tabBar.items!)! {
+            barItem.enabled = isEnabled
+        }
+        
         spinner.hidden = isEnabled
         mapView.zoomEnabled = isEnabled
         mapView.scrollEnabled = isEnabled
@@ -39,8 +49,10 @@ class MapViewController: UIViewController {
         
         if(isEnabled) {
             spinner.stopAnimating()
+            overlay?.removeFromSuperview()
         } else {
             spinner.startAnimating()
+            view.addSubview(overlay!)
         }
     }
     
