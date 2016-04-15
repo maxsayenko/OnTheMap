@@ -26,8 +26,10 @@ class MapViewController: UIViewController {
         setUIState(isEnabled: false)
         UdacityNetworkHelper.logoutUdacity { (isSuccessful, errorString) -> Void in
             if(isSuccessful) {
-                let loginScreen = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
-                self.presentViewController(loginScreen, animated: true, completion: nil)
+                performUIUpdatesOnMain({ () -> Void in
+                    let loginScreen = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+                    self.presentViewController(loginScreen, animated: true, completion: nil)
+                })
             }
         }
     }
