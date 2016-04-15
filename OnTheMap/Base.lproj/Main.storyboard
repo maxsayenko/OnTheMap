@@ -87,8 +87,8 @@
                                     <outlet property="delegate" destination="nVs-z6-4NQ" id="GTR-7c-xE4"/>
                                 </connections>
                             </mapView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qlP-gE-lAe">
-                                <rect key="frame" x="151" y="281" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qlP-gE-lAe">
+                                <rect key="frame" x="150" y="281" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,10 +102,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="NV3-yL-lmt">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZwP-Fw-4S5"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZwP-Fw-4S5">
+                            <connections>
+                                <action selector="logoutClicked:" destination="nVs-z6-4NQ" id="04h-lR-Ud8"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="ppr-h3-o8f"/>
-                            <barButtonItem image="pin" id="kym-mW-DcM"/>
+                            <barButtonItem systemItem="refresh" id="ppr-h3-o8f">
+                                <connections>
+                                    <action selector="refreshClicked:" destination="nVs-z6-4NQ" id="0GW-sY-9oD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="kym-mW-DcM">
+                                <connections>
+                                    <action selector="pinClicked:" destination="nVs-z6-4NQ" id="xBO-py-Qhr"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -126,12 +138,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="y2c-Fa-iUS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" textLabel="UgL-ft-uaK" detailTextLabel="C1a-kb-C9p" imageView="LR8-NA-2EF" style="IBUITableViewCellStyleSubtitle" id="y2c-Fa-iUS">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y2c-Fa-iUS" id="YIn-4a-O2J">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UgL-ft-uaK">
+                                            <rect key="frame" x="62" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1a-kb-C9p">
+                                            <rect key="frame" x="62" y="25.5" width="30.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pin" id="LR8-NA-2EF">
+                                            <rect key="frame" x="15" y="5" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
