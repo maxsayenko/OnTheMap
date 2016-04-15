@@ -30,9 +30,7 @@ class LoginViewController: UIViewController {
         UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
             if let errorMessage = errorString where errorString != nil {
                 performUIUpdatesOnMain({ () -> Void in
-                    let alertController = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    UIHelper.showErrorMessage(self, message: errorMessage)
                     self.setUIState(isEnabled: true)
                 })
                 return
