@@ -30,7 +30,7 @@ class TableViewController: UITableViewController {
         
         spinner.center = view.center
         //spinner.frame = CGRect(origin: overlay!.center, size: CGSize(width: 50, height: 50))
-        spinner.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 25, y: UIScreen.mainScreen().bounds.height/2 - 25, width: 50, height: 50)
+        spinner.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 25, y: UIScreen.mainScreen().bounds.height/2 - 50, width: 50, height: 50)
         overlay?.addSubview(spinner)
         view.addSubview(overlay!)
     }
