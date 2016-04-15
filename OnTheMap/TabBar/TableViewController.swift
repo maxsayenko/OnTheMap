@@ -12,6 +12,7 @@ class TableViewController: UITableViewController {
     var overlay : UIView?
     
     @IBAction func refreshCliked(sender: UIBarButtonItem) {
+        getData()
     }
     
     @IBAction func pinClicked(sender: UIBarButtonItem) {
@@ -21,7 +22,37 @@ class TableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-
+        overlay = UIView(frame: view.frame)
+        overlay!.backgroundColor = UIColor.blackColor()
+        overlay!.alpha = 0.8
+    }
+    
+    func getData() {
+        setUIState(isEnabled: false)
+        UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                print("ERROR - TableViewController \(errorMessage)")
+                return
+            }
+            SharedModel.sharedInstance.students = students
+            
+            performUIUpdatesOnMain({ () -> Void in
+                self.setUIState(isEnabled: true)
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
+    func setUIState(isEnabled isEnabled: Bool) {
+        for barItem in (tabBarController?.tabBar.items!)! {
+            barItem.enabled = isEnabled
+        }
+        
+        if(isEnabled) {
+            overlay?.removeFromSuperview()
+        } else {
+            view.addSubview(overlay!)
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
