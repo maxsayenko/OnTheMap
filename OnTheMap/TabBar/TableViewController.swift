@@ -20,6 +20,15 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
+        setUIState(isEnabled: false)
+        UdacityNetworkHelper.logoutUdacity { (isSuccessful, errorString) -> Void in
+            if(isSuccessful) {
+                performUIUpdatesOnMain({ () -> Void in
+                    let loginScreen = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+                    self.presentViewController(loginScreen, animated: true, completion: nil)
+                })
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -29,7 +38,6 @@ class TableViewController: UITableViewController {
         overlay?.hidden = true
         
         spinner.center = view.center
-        //spinner.frame = CGRect(origin: overlay!.center, size: CGSize(width: 50, height: 50))
         spinner.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 25, y: UIScreen.mainScreen().bounds.height/2 - 50, width: 50, height: 50)
         overlay?.addSubview(spinner)
         view.addSubview(overlay!)
@@ -39,7 +47,7 @@ class TableViewController: UITableViewController {
         setUIState(isEnabled: false)
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
-                print("ERROR - TableViewController \(errorMessage)")
+                UIHelper.showErrorMessage(self, message: errorMessage)
                 return
             }
             SharedModel.sharedInstance.students = students
@@ -56,7 +64,6 @@ class TableViewController: UITableViewController {
             barItem.enabled = isEnabled
         }
         
-        //spinner.hidden = isEnabled
         overlay?.hidden = isEnabled
         
         if(isEnabled) {
@@ -86,7 +93,7 @@ class TableViewController: UITableViewController {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:(cell.detailTextLabel?.text)!)!)
             if(!didOpen) {
-                print("Put Error Message here. Didn't open.")
+                UIHelper.showErrorMessage(self, message: "Bad URL address")
             }
         }
     }

@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
         setUIState(isEnabled: false)
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
-                print("ERROR - MapViewController \(errorMessage)")
+                UIHelper.showErrorMessage(self, message: errorMessage)
                 return
             }
             SharedModel.sharedInstance.students = students
@@ -137,7 +137,7 @@ extension MapViewController: MKMapViewDelegate {
         if (control == view.rightCalloutAccessoryView) {
             let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:urlString)!)
             if(!didOpen) {
-                print("Put Error Message here. Didn't open.")
+                UIHelper.showErrorMessage(self, message: "Bad URL address")
             }
         }
     }
