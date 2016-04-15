@@ -23,6 +23,13 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
+        setUIState(isEnabled: false)
+        UdacityNetworkHelper.logoutUdacity { (isSuccessful, errorString) -> Void in
+            if(isSuccessful) {
+                let loginScreen = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+                self.presentViewController(loginScreen, animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {
