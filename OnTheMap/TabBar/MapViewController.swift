@@ -14,12 +14,28 @@ class MapViewController: UIViewController {
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     var overlay : UIView?
+
+    @IBAction func refreshClicked(sender: UIBarButtonItem) {
+        getData()
+    }
+    
+    @IBAction func pinClicked(sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func logoutClicked(sender: UIBarButtonItem) {
+    }
+    
     
     override func viewDidLoad() {
         overlay = UIView(frame: view.frame)
         overlay!.backgroundColor = UIColor.blackColor()
         overlay!.alpha = 0.8
+        spinner.hidden = true
         
+        getData()
+    }
+    
+    func getData() {
         setUIState(isEnabled: false)
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
@@ -27,8 +43,9 @@ class MapViewController: UIViewController {
                 return
             }
             SharedModel.sharedInstance.students = students
-
+            
             performUIUpdatesOnMain({ () -> Void in
+                self.mapView.removeAnnotations(self.mapView.annotations)
                 self.setUIState(isEnabled: true)
                 for info in SharedModel.sharedInstance.students! {
                     self.addPin(studentInformation: info)
