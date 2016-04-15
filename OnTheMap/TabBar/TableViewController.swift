@@ -28,4 +28,13 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:(cell.detailTextLabel?.text)!)!)
+            if(!didOpen) {
+                print("Put Error Message here. Didn't open.")
+            }
+        }
+    }
 }
