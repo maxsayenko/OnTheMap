@@ -16,12 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBAction func loginPressed(sender: UIButton) {
-        setUIState(false)
+        setUIState(isEnabled: false)
         getSession(emailText.text!, password: passwordText.text!)
     }
     
     override func viewDidLoad() {
-        self.setUIState(true)
+        print(__FUNCTION__)
+        self.setUIState(isEnabled: true)
     }
     
     //TODO: Block UI and show spinner while loading
@@ -32,7 +33,7 @@ class LoginViewController: UIViewController {
                     let alertController = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
-                    self.setUIState(true)
+                    self.setUIState(isEnabled: true)
                 })
                 return
             }
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func setUIState(isEnabled: Bool) {
+    func setUIState(isEnabled isEnabled: Bool) {
         spinner.hidden = isEnabled
         emailText.enabled = isEnabled
         passwordText.enabled = isEnabled
