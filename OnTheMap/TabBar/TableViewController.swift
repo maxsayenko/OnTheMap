@@ -9,6 +9,17 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    var overlay : UIView?
+    
+    @IBAction func refreshCliked(sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func pinClicked(sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func logoutClicked(sender: UIBarButtonItem) {
+    }
+    
     override func viewDidLoad() {
 
     }

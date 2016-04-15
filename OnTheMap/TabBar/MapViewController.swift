@@ -25,7 +25,6 @@ class MapViewController: UIViewController {
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
     }
     
-    
     override func viewDidLoad() {
         overlay = UIView(frame: view.frame)
         overlay!.backgroundColor = UIColor.blackColor()

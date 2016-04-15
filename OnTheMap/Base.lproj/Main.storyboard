@@ -173,10 +173,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="bsY-Qh-nAM">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Wp6-lE-3tH"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Wp6-lE-3tH">
+                            <connections>
+                                <action selector="logoutClicked:" destination="Ztd-Ed-3zn" id="mXf-zR-S6q"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="Jci-Kh-FMl"/>
-                            <barButtonItem image="pin" id="dlx-zk-mBg"/>
+                            <barButtonItem systemItem="refresh" id="Jci-Kh-FMl">
+                                <connections>
+                                    <action selector="refreshCliked:" destination="Ztd-Ed-3zn" id="W9b-5T-lTZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="dlx-zk-mBg">
+                                <connections>
+                                    <action selector="pinClicked:" destination="Ztd-Ed-3zn" id="CfB-KV-e9U"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
