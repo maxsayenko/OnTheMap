@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        print(__FUNCTION__)
         self.setUIState(isEnabled: true)
     }
     
