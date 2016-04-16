@@ -7,20 +7,59 @@
 //
 
 import UIKit
+import MapKit
 
-class PostPinViewController: UIViewController {
+class PostPinViewController: UIViewController, UITextFieldDelegate {
     
     var name: String = ""
-
+    
     @IBAction func cancelClicked(sender: UIButton) {
         print(self.presentingViewController)
         dismissViewControllerAnimated(true, completion: {})
     }
     
+    @IBOutlet var locationText: UITextView!
+    
     @IBAction func finClicked(sender: UIButton) {
-        let pinMapScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("pinMapViewController"))! as! PinMapViewController
-        pinMapScreen.name = "afas"
-        self.presentViewController(pinMapScreen, animated: false, completion: nil)
-
+        if(locationText.text.isEmpty) {
+            UIHelper.showErrorMessage(self, message: "Must Enter a Location")
+            return
+        }
+        
+        let address = "1 Infinite Loop, CA, USA"
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) -> Void in
+            
+            if(error != nil) {
+                UIHelper.showErrorMessage(self, message: "Could Not Geocode the String.")
+                return
+            }
+            
+            let pinMapScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("pinMapViewController"))! as! PinMapViewController
+            pinMapScreen.name = "afas"
+            
+            if let placemark = placemarks?.first {
+                pinMapScreen.placemark = placemark
+            }
+            
+            self.presentViewController(pinMapScreen, animated: false, completion: nil)
+        }
+        
+        //        geocoder.geocodeAddressString(address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+        //            if let placemark = placemarks?[0] as? CLPlacemark {
+        //                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
+        //            }
+        //        })
+    }
+    
+    // Dismissing keyboard
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

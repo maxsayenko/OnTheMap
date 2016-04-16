@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import MapKit
 
 class PinMapViewController: UIViewController {
     var name: String = ""
+    var placemark: CLPlacemark? = nil
 
     @IBAction func cancelClicked(sender: AnyObject) {
         presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 //        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        print(name)
+        print(placemark)
     }
 }
