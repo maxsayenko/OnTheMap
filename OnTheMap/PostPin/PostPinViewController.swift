@@ -26,7 +26,7 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let address = "1 Infinite Loop, CA, USA"
+        let address = locationText.text
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error) -> Void in
             
@@ -44,12 +44,6 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             
             self.presentViewController(pinMapScreen, animated: false, completion: nil)
         }
-        
-        //        geocoder.geocodeAddressString(address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
-        //            if let placemark = placemarks?[0] as? CLPlacemark {
-        //                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
-        //            }
-        //        })
     }
     
     // Dismissing keyboard

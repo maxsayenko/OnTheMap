@@ -142,28 +142,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A03-nF-nCQ">
-                                <rect key="frame" x="260" y="20" width="60" height="30"/>
+                                <rect key="frame" x="260" y="8" width="60" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="9jb-f9-Oia"/>
+                                    <constraint firstAttribute="width" constant="60" id="sxI-Gb-APu"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="Jj7-lj-sXr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-ig-4T9">
-                                <rect key="frame" x="20" y="46" width="280" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHN-39-bag">
-                                <rect key="frame" x="0.0" y="121" width="320" height="369"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZHN-39-bag">
+                                <rect key="frame" x="0.0" y="89" width="320" height="404"/>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="369" id="9Rb-uz-YLL"/>
+                                    <constraint firstAttribute="height" constant="404" id="DGJ-6O-HxN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLN-4o-QPq">
@@ -181,22 +176,30 @@
                                     <action selector="finClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="qZ7-8F-3pM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-ig-4T9">
+                                <rect key="frame" x="20" y="46" width="280" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NhV-3k-gmD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sLN-4o-QPq" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="63" id="5Uc-q6-vIP"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="top" secondItem="7Xg-ig-4T9" secondAttribute="bottom" constant="54" id="8i9-Tx-0lN"/>
-                            <constraint firstAttribute="bottom" secondItem="sLN-4o-QPq" secondAttribute="bottom" constant="20" symbolic="YES" id="93X-Km-Nps"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="DbA-HG-Eyb"/>
-                            <constraint firstItem="VvW-rE-4KI" firstAttribute="top" secondItem="7Xg-ig-4T9" secondAttribute="bottom" constant="501" id="LY6-Zn-OkN"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="sLN-4o-QPq" secondAttribute="centerX" id="NcM-Zo-lFp"/>
-                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="Rpf-M4-Qbc" secondAttribute="bottom" constant="26" id="PK1-Kk-Os0"/>
-                            <constraint firstItem="sLN-4o-QPq" firstAttribute="top" secondItem="ZHN-39-bag" secondAttribute="bottom" constant="28" id="Pqg-BB-Lyu"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="7Xg-ig-4T9" secondAttribute="centerX" id="TTn-x0-sCq"/>
-                            <constraint firstItem="A03-nF-nCQ" firstAttribute="top" secondItem="Rpf-M4-Qbc" secondAttribute="bottom" id="ctf-Ly-bYE"/>
-                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="df8-rJ-oJw"/>
-                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="4" id="lwc-wI-mwe"/>
-                            <constraint firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="vbQ-FY-M4k"/>
+                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="1Xk-6Y-gaN"/>
+                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="A03-nF-nCQ" secondAttribute="bottom" constant="8" symbolic="YES" id="59z-8L-3S5"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="Ak9-Vu-7hz"/>
+                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="nMV-Gd-Lmp" secondAttribute="top" constant="46" id="LzB-Xt-cRm"/>
+                            <constraint firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="MFj-Rc-A1q"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="7Xg-ig-4T9" secondAttribute="centerX" id="b3w-sG-yWZ"/>
+                            <constraint firstItem="7Xg-ig-4T9" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="4" id="cZe-Gq-R6C"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="top" secondItem="7Xg-ig-4T9" secondAttribute="bottom" constant="22" id="fwj-o6-pB8"/>
+                            <constraint firstItem="sLN-4o-QPq" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="63" id="hwx-kH-sO7"/>
+                            <constraint firstAttribute="bottom" secondItem="sLN-4o-QPq" secondAttribute="bottom" constant="20" symbolic="YES" id="uDh-A1-mXv"/>
+                            <constraint firstItem="sLN-4o-QPq" firstAttribute="top" secondItem="ZHN-39-bag" secondAttribute="bottom" constant="25" id="wyl-6P-UAi"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="sLN-4o-QPq" secondAttribute="centerX" id="zks-rG-AjL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rlr-6c-LT3"/>
@@ -220,23 +223,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-OZ-ygj">
-                                <rect key="frame" x="260" y="20" width="60" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="HOm-Bc-uA7"/>
-                                </constraints>
-                                <state key="normal" title="Cancel"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eN6-oN-68j">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-OZ-ygj">
+                                        <rect key="frame" x="260" y="8" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="ZvD-pd-O7J"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelClicked:" destination="Mp5-2n-WP2" eventType="touchUpInside" id="geE-Ft-zas"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ML-DI-ZTl">
+                                <rect key="frame" x="0.0" y="86" width="320" height="482"/>
                                 <connections>
-                                    <action selector="cancelClicked:" destination="Mp5-2n-WP2" eventType="touchUpInside" id="geE-Ft-zas"/>
+                                    <outlet property="delegate" destination="Mp5-2n-WP2" id="11S-4N-Vkt"/>
                                 </connections>
-                            </button>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cmT-OZ-ygj" firstAttribute="top" secondItem="XTV-Hh-oVq" secondAttribute="bottom" id="9cP-gf-DPD"/>
-                            <constraint firstAttribute="trailing" secondItem="cmT-OZ-ygj" secondAttribute="trailing" id="pZy-ff-bO4"/>
+                            <constraint firstItem="4ML-DI-ZTl" firstAttribute="leading" secondItem="eN6-oN-68j" secondAttribute="leading" id="5BG-DU-npQ"/>
+                            <constraint firstItem="4ML-DI-ZTl" firstAttribute="top" secondItem="eN6-oN-68j" secondAttribute="bottom" constant="1" id="BbI-AY-tLS"/>
+                            <constraint firstAttribute="bottom" secondItem="eN6-oN-68j" secondAttribute="bottom" constant="483" id="JRz-qL-d7T"/>
+                            <constraint firstItem="eN6-oN-68j" firstAttribute="leading" secondItem="BCH-Hu-yDl" secondAttribute="leading" id="UMi-aT-ffg"/>
+                            <constraint firstItem="4ML-DI-ZTl" firstAttribute="trailing" secondItem="eN6-oN-68j" secondAttribute="trailing" id="gN4-5d-5cO"/>
+                            <constraint firstItem="eN6-oN-68j" firstAttribute="top" secondItem="BCH-Hu-yDl" secondAttribute="top" id="gvN-uK-qNy"/>
+                            <constraint firstAttribute="trailing" secondItem="eN6-oN-68j" secondAttribute="trailing" id="m4y-zf-x2M"/>
+                            <constraint firstItem="4ML-DI-ZTl" firstAttribute="bottom" secondItem="mhX-1q-YW3" secondAttribute="top" id="vlq-hl-8Ly"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="4ML-DI-ZTl" id="YXA-t7-LT9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWu-en-wKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
