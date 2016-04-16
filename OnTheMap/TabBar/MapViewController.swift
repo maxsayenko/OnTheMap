@@ -20,6 +20,9 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func pinClicked(sender: UIBarButtonItem) {
+        let postPinScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("postPinViewController"))! as! PostPinViewController
+        postPinScreen.name = ""
+        self.presentViewController(postPinScreen, animated: false, completion: nil)
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {

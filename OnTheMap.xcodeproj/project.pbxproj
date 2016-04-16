@@ -15,6 +15,8 @@
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
 		E292D0C81CABA32B0045750E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292D0C71CABA32B0045750E /* MapViewController.swift */; };
 		E29819321CC1945900DA77B7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819311CC1945900DA77B7 /* UIHelper.swift */; };
+		E29819351CC19BCE00DA77B7 /* PostPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */; };
+		E29819371CC1BA9B00DA77B7 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819361CC1BA9B00DA77B7 /* PinMapViewController.swift */; };
 		E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C41C7EE4330016460F /* AppDelegate.swift */; };
 		E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F063C61C7EE4330016460F /* LoginViewController.swift */; };
 		E2F063CA1C7EE4330016460F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F063C81C7EE4330016460F /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
 		E292D0C71CABA32B0045750E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E29819311CC1945900DA77B7 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinViewController.swift; sourceTree = "<group>"; };
+		E29819361CC1BA9B00DA77B7 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
 		E2F063C11C7EE4330016460F /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F063C41C7EE4330016460F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2F063C61C7EE4330016460F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		E29819331CC19B4C00DA77B7 /* PostPin */ = {
+			isa = PBXGroup;
+			children = (
+				E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */,
+				E29819361CC1BA9B00DA77B7 /* PinMapViewController.swift */,
+			);
+			path = PostPin;
+			sourceTree = "<group>";
+		};
 		E2F063B81C7EE4330016460F = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 			children = (
 				E247E0411C900FC1003358F1 /* Helpers */,
 				E247E03E1C8EBE5E003358F1 /* Models */,
+				E29819331CC19B4C00DA77B7 /* PostPin */,
 				E247E03B1C8EB848003358F1 /* TabBar */,
 				E247E03A1C8EB83F003358F1 /* Login */,
 				E2F063C41C7EE4330016460F /* AppDelegate.swift */,
@@ -197,9 +211,11 @@
 				E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */,
 				E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */,
 				E202AFD91CABB26C0050124A /* Network.swift in Sources */,
+				E29819371CC1BA9B00DA77B7 /* PinMapViewController.swift in Sources */,
 				E29819321CC1945900DA77B7 /* UIHelper.swift in Sources */,
 				E20BE3D61CB8CB9A005BF4E1 /* SharedModel.swift in Sources */,
 				E2FCCC741C8B7D8B00F553F2 /* GDC.swift in Sources */,
+				E29819351CC19BCE00DA77B7 /* PostPinViewController.swift in Sources */,
 				E2F063C71C7EE4330016460F /* LoginViewController.swift in Sources */,
 				E2F063C51C7EE4330016460F /* AppDelegate.swift in Sources */,
 				E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */,
