@@ -36,7 +36,8 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             }
             
             let pinMapScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("pinMapViewController"))! as! PinMapViewController
-            pinMapScreen.name = "afas"
+            pinMapScreen.firstName = "afas"
+            pinMapScreen.lastName = "gggg"
             
             if let placemark = placemarks?.first {
                 pinMapScreen.placemark = placemark

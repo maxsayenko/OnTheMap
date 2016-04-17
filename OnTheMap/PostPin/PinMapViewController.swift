@@ -10,22 +10,31 @@ import UIKit
 import MapKit
 
 class PinMapViewController: UIViewController, MKMapViewDelegate {
-    var name: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    
     var placemark: CLPlacemark? = nil
+    
+    @IBOutlet var linkTextField: UITextField!
 
     @IBOutlet var mapView: MKMapView!
     
+    @IBAction func submitClicked(sender: UIButton) {
+        print("submitting")
+    }
+    
     @IBAction func cancelClicked(sender: AnyObject) {
         presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-//        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
-        print(name)
-        print(placemark)
+        linkTextField.backgroundColor = UIColor.clearColor()
+        let placeholder = NSAttributedString(string: "Enter a Link to Share Here", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+        linkTextField.attributedPlaceholder = placeholder
+        
+        
         mapView.addAnnotation(MKPlacemark(placemark: placemark!))
         //mapView.showAnnotations(mapView.annotations, animated: true)
-        
         
         // get the particular pin that was tapped
         let pinToZoomOn = mapView.annotations[0]
@@ -45,4 +54,15 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
 //    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
 //        print(mapView.region)
 //    }
+    
+    // Dismissing keyboard
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

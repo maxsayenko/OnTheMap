@@ -151,19 +151,29 @@
                                     <action selector="cancelClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="Jj7-lj-sXr"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZHN-39-bag">
-                                <rect key="frame" x="0.0" y="89" width="320" height="404"/>
-                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-ig-4T9">
+                                <rect key="frame" x="20" y="46" width="280" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="404" id="DGJ-6O-HxN"/>
+                                    <constraint firstAttribute="height" constant="21" id="NhV-3k-gmD"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZHN-39-bag">
+                                <rect key="frame" x="-4" y="89" width="328" height="404"/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLN-4o-QPq">
-                                <rect key="frame" x="79" y="518" width="163" height="30"/>
+                                <rect key="frame" x="70" y="515" width="180" height="33"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Acl-2R-vlc"/>
+                                    <constraint firstAttribute="width" constant="180" id="SF9-5e-9S2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Find on the Map"/>
                                 <userDefinedRuntimeAttributes>
@@ -176,30 +186,21 @@
                                     <action selector="finClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="qZ7-8F-3pM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-ig-4T9">
-                                <rect key="frame" x="20" y="46" width="280" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="NhV-3k-gmD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="1Xk-6Y-gaN"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="A03-nF-nCQ" secondAttribute="bottom" constant="8" symbolic="YES" id="59z-8L-3S5"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="Ak9-Vu-7hz"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="6tE-oU-MbE"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="nMV-Gd-Lmp" secondAttribute="top" constant="46" id="LzB-Xt-cRm"/>
                             <constraint firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="MFj-Rc-A1q"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="7Xg-ig-4T9" secondAttribute="centerX" id="b3w-sG-yWZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZHN-39-bag" secondAttribute="trailing" constant="-20" id="Mqf-QB-nxS"/>
+                            <constraint firstAttribute="bottom" secondItem="sLN-4o-QPq" secondAttribute="bottom" constant="20" symbolic="YES" id="NRz-aj-uRm"/>
+                            <constraint firstItem="ZHN-39-bag" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="-20" id="Sfc-j6-z0Q"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="4" id="cZe-Gq-R6C"/>
                             <constraint firstItem="ZHN-39-bag" firstAttribute="top" secondItem="7Xg-ig-4T9" secondAttribute="bottom" constant="22" id="fwj-o6-pB8"/>
-                            <constraint firstItem="sLN-4o-QPq" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="63" id="hwx-kH-sO7"/>
-                            <constraint firstAttribute="bottom" secondItem="sLN-4o-QPq" secondAttribute="bottom" constant="20" symbolic="YES" id="uDh-A1-mXv"/>
-                            <constraint firstItem="sLN-4o-QPq" firstAttribute="top" secondItem="ZHN-39-bag" secondAttribute="bottom" constant="25" id="wyl-6P-UAi"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="sLN-4o-QPq" secondAttribute="centerX" id="zks-rG-AjL"/>
+                            <constraint firstItem="sLN-4o-QPq" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="oMc-aL-gRE"/>
+                            <constraint firstItem="VvW-rE-4KI" firstAttribute="top" secondItem="ZHN-39-bag" secondAttribute="bottom" constant="75" id="vfH-hy-eyb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rlr-6c-LT3"/>
@@ -226,7 +227,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eN6-oN-68j">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-OZ-ygj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-OZ-ygj">
                                         <rect key="frame" x="260" y="8" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="ZvD-pd-O7J"/>
@@ -238,8 +239,22 @@
                                             <action selector="cancelClicked:" destination="Mp5-2n-WP2" eventType="touchUpInside" id="geE-Ft-zas"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzh-ye-fa7">
+                                        <rect key="frame" x="8" y="28" width="304" height="30"/>
+                                        <color key="backgroundColor" red="0.9960784912109375" green="0.9960784912109375" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cmT-OZ-ygj" secondAttribute="trailing" id="44l-vp-xRy"/>
+                                    <constraint firstItem="cmT-OZ-ygj" firstAttribute="top" secondItem="eN6-oN-68j" secondAttribute="topMargin" id="9Kn-tG-cDO"/>
+                                    <constraint firstItem="Tzh-ye-fa7" firstAttribute="leading" secondItem="eN6-oN-68j" secondAttribute="leadingMargin" id="RfH-hJ-6Iz"/>
+                                    <constraint firstItem="Tzh-ye-fa7" firstAttribute="centerY" secondItem="eN6-oN-68j" secondAttribute="centerY" id="iYq-0X-z82"/>
+                                    <constraint firstItem="Tzh-ye-fa7" firstAttribute="trailing" secondItem="eN6-oN-68j" secondAttribute="trailingMargin" id="xFb-m4-DxN"/>
+                                </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ML-DI-ZTl">
                                 <rect key="frame" x="0.0" y="86" width="320" height="482"/>
@@ -247,20 +262,43 @@
                                     <outlet property="delegate" destination="Mp5-2n-WP2" id="11S-4N-Vkt"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-Av-l2h">
+                                <rect key="frame" x="79" y="518" width="163" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="h6R-u0-4nT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Submit"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="6h6-gg-RA9"/>
+                                    <action selector="submitClicked:" destination="Mp5-2n-WP2" eventType="touchUpInside" id="mcI-x4-yvk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4ML-DI-ZTl" firstAttribute="leading" secondItem="eN6-oN-68j" secondAttribute="leading" id="5BG-DU-npQ"/>
                             <constraint firstItem="4ML-DI-ZTl" firstAttribute="top" secondItem="eN6-oN-68j" secondAttribute="bottom" constant="1" id="BbI-AY-tLS"/>
+                            <constraint firstItem="LCN-Av-l2h" firstAttribute="leading" secondItem="BCH-Hu-yDl" secondAttribute="leadingMargin" constant="63" id="EWl-Eo-ZOM"/>
                             <constraint firstAttribute="bottom" secondItem="eN6-oN-68j" secondAttribute="bottom" constant="483" id="JRz-qL-d7T"/>
                             <constraint firstItem="eN6-oN-68j" firstAttribute="leading" secondItem="BCH-Hu-yDl" secondAttribute="leading" id="UMi-aT-ffg"/>
+                            <constraint firstAttribute="bottom" secondItem="LCN-Av-l2h" secondAttribute="bottom" constant="20" symbolic="YES" id="a7U-gt-FvQ"/>
                             <constraint firstItem="4ML-DI-ZTl" firstAttribute="trailing" secondItem="eN6-oN-68j" secondAttribute="trailing" id="gN4-5d-5cO"/>
                             <constraint firstItem="eN6-oN-68j" firstAttribute="top" secondItem="BCH-Hu-yDl" secondAttribute="top" id="gvN-uK-qNy"/>
+                            <constraint firstItem="LCN-Av-l2h" firstAttribute="centerX" secondItem="4ML-DI-ZTl" secondAttribute="centerX" id="kPM-aK-Mr6"/>
                             <constraint firstAttribute="trailing" secondItem="eN6-oN-68j" secondAttribute="trailing" id="m4y-zf-x2M"/>
                             <constraint firstItem="4ML-DI-ZTl" firstAttribute="bottom" secondItem="mhX-1q-YW3" secondAttribute="top" id="vlq-hl-8Ly"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="linkTextField" destination="Tzh-ye-fa7" id="30q-Uo-2eL"/>
                         <outlet property="mapView" destination="4ML-DI-ZTl" id="YXA-t7-LT9"/>
                     </connections>
                 </viewController>
