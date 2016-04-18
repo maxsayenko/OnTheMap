@@ -150,27 +150,43 @@ struct UdacityNetworkHelper {
         }
     }
     
-    static func postStudentLocation() {
+    static func sendStudentLocation(locationId: String?, uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: String, lat: Double, long: Double, completionHandler: (objectId: String?, errorString: String?) -> Void) {
+        
         let headers = [
             "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
             "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY",
             "Content-Type" : "application/json"
         ]
         
-        let data = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com/user1\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+        let data = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(lat), \"longitude\": \(long)}"
         
-        Network.post("https://api.parse.com/1/classes/StudentLocation", headers: headers, data: data) { (data, errorString) -> Void in
+        var url = "https://api.parse.com/1/classes/StudentLocation"
+        var method = "POST"
+        if let locationId = locationId {
+            url = "https://api.parse.com/1/classes/StudentLocation/\(locationId)"
+            method = "PUT"
+        }
+        
+        Network.request(url, headers: headers, method: method, data: data) { (data, errorString) -> Void in
             var parsedData: NSDictionary = NSDictionary()
             if let newData = data as! NSData? {
                 do {
                     parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
                 } catch {
-                    //completionHandler(students: nil, errorString: BAD_DATA)
+                    completionHandler(objectId: nil, errorString: BAD_DATA)
                     return
                 }
             }
             
-            print(parsedData)
+            if let locationId = locationId {
+                completionHandler(objectId: locationId, errorString: nil)
+                return
+            }
+
+            if let objectId = parsedData["objectId"] as! String? {
+                completionHandler(objectId: objectId, errorString: nil)
+                return
+            }
         }
     }
     

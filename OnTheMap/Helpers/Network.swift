@@ -25,11 +25,15 @@ struct Network {
         request(url, headers: headers, method: "POST", data: data, completionHandler: completionHandler)
     }
     
+    static func put(url: String, headers: [String : String]?, data: String, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
+        request(url, headers: headers, method: "PUT", data: data, completionHandler: completionHandler)
+    }
+    
     static func delete(url: String, headers: [String : String]?, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
         request(url, headers: headers, method: "DELETE", data: nil, completionHandler: completionHandler)
     }
     
-    private static func request(url: String, headers: [String : String]?, method: String, data: String?, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
+    static func request(url: String, headers: [String : String]?, method: String, data: String?, completionHandler: (data: AnyObject?, errorString: String?) -> Void) {
         
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = method
