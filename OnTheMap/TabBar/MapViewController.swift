@@ -50,6 +50,13 @@ class MapViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if let students = SharedModel.sharedInstance.students {
+            mapView.removeAnnotations(mapView.annotations)
+            addPins(students)
+        }
+    }
+    
     override func viewDidLoad() {
         let loadingState = UIHelper.getLoadingState(view)
         overlay = loadingState.overlay
@@ -70,9 +77,8 @@ class MapViewController: UIViewController {
             performUIUpdatesOnMain({ () -> Void in
                 self.mapView.removeAnnotations(self.mapView.annotations)
                 self.setUIState(isEnabled: true)
-                for info in SharedModel.sharedInstance.students! {
-                    self.addPin(studentInformation: info)
-                }
+                
+                self.addPins(SharedModel.sharedInstance.students!)
             })
         }
     }
@@ -94,6 +100,21 @@ class MapViewController: UIViewController {
         } else {
             spinner!.startAnimating()
         }
+    }
+    
+    func addPins(infos: [StudentInformation]) {
+        let annotations = infos.map { (info) -> MKPointAnnotation in
+            
+            let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(info.latitude!, info.longitude!)
+            let objectAnnotation = MKPointAnnotation()
+            objectAnnotation.coordinate = pinLocation
+            objectAnnotation.title = "\(info.firstName) \(info.lastName)"
+            objectAnnotation.subtitle = info.mediaURL
+
+            return objectAnnotation
+        }
+
+        mapView.addAnnotations(annotations)
     }
     
     func addPin(studentInformation info: StudentInformation) {
@@ -124,7 +145,7 @@ extension MapViewController: MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         if (pinView == nil) {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.animatesDrop = true
+            pinView?.animatesDrop = false
             pinView?.canShowCallout = true
             pinView?.draggable = true
             pinView?.pinTintColor = UIColor.purpleColor()
