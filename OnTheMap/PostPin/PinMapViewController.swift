@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 
 class PinMapViewController: UIViewController, MKMapViewDelegate {
+    var overlay: UIView?
+    var spinner: UIActivityIndicatorView?
+    
     var userName: (firstName: String, lastName: String)?
     var placemark: CLPlacemark? = nil
     var locationString: String?
@@ -21,6 +24,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func submitClicked(sender: UIButton) {
+        setUIState(isEnabled: false)
+        
         let lat = (pin?.coordinate.latitude)! as Double
         let long = (pin?.coordinate.longitude)! as Double
         let locationId: String? = SharedModel.sharedInstance.user?.postedLocationId
@@ -28,12 +33,14 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         UdacityNetworkHelper.sendStudentLocation(locationId, uniqueKey: "qwert", firstName: userName!.firstName, lastName: userName!.lastName, mapString: locationString!, mediaURL: linkTextField.text!, lat: lat, long: long) { (objectId, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 performUIUpdatesOnMain({ () -> Void in
+                    self.setUIState(isEnabled: true)
                     UIHelper.showErrorMessage(self, message: errorMessage)
                 })
                 return
             }
             
             performUIUpdatesOnMain({ () -> Void in
+                self.setUIState(isEnabled: true)
                 SharedModel.sharedInstance.user?.postedLocationId = objectId
                 self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             });
@@ -45,6 +52,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewDidLoad() {
+        let loadingState = UIHelper.getLoadingState(view)
+        overlay = loadingState.overlay
+        spinner = loadingState.spinner
+        
         linkTextField.backgroundColor = UIColor.clearColor()
         let placeholder = NSAttributedString(string: "Enter a Link to Share Here", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
         linkTextField.attributedPlaceholder = placeholder
@@ -67,9 +78,15 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-//    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-//        print(mapView.region)
-//    }
+    func setUIState(isEnabled isEnabled: Bool) {
+        overlay?.hidden = isEnabled
+        
+        if(isEnabled) {
+            spinner!.stopAnimating()
+        } else {
+            spinner!.startAnimating()
+        }
+    }
     
     // Dismissing keyboard
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
