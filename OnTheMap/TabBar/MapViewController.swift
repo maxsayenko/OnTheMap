@@ -10,11 +10,11 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet var spinner: UIActivityIndicatorView!
+    var overlay: UIView?
+    var spinner: UIActivityIndicatorView?
     
-    var overlay : UIView?
-
+    @IBOutlet var mapView: MKMapView!
+    
     @IBAction func refreshClicked(sender: UIBarButtonItem) {
         getData()
     }
@@ -51,10 +51,9 @@ class MapViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        overlay = UIView(frame: view.frame)
-        overlay!.backgroundColor = UIColor.blackColor()
-        overlay!.alpha = 0.8
-        spinner.hidden = true
+        let loadingState = UIHelper.getLoadingState(view)
+        overlay = loadingState.overlay
+        spinner = loadingState.spinner
 
         getData()
     }
@@ -83,17 +82,17 @@ class MapViewController: UIViewController {
             barItem.enabled = isEnabled
         }
         
-        spinner.hidden = isEnabled
+        spinner!.hidden = isEnabled
         mapView.zoomEnabled = isEnabled
         mapView.scrollEnabled = isEnabled
         mapView.userInteractionEnabled = isEnabled
         
+        overlay?.hidden = isEnabled
+        
         if(isEnabled) {
-            spinner.stopAnimating()
-            overlay?.removeFromSuperview()
+            spinner!.stopAnimating()
         } else {
-            spinner.startAnimating()
-            view.addSubview(overlay!)
+            spinner!.startAnimating()
         }
     }
     

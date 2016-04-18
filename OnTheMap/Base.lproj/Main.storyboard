@@ -87,15 +87,10 @@
                                     <outlet property="delegate" destination="nVs-z6-4NQ" id="GTR-7c-xE4"/>
                                 </connections>
                             </mapView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qlP-gE-lAe">
-                                <rect key="frame" x="150" y="281" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SjN-eB-DVY" secondAttribute="trailing" id="4g5-DP-5ko"/>
-                            <constraint firstItem="qlP-gE-lAe" firstAttribute="centerX" secondItem="SjN-eB-DVY" secondAttribute="centerX" id="7u5-3S-Hw4"/>
-                            <constraint firstItem="qlP-gE-lAe" firstAttribute="centerY" secondItem="SjN-eB-DVY" secondAttribute="centerY" id="Wjf-BJ-WOP"/>
                             <constraint firstItem="SjN-eB-DVY" firstAttribute="top" secondItem="xiZ-mE-bMn" secondAttribute="bottom" id="l6U-Ff-svF"/>
                             <constraint firstItem="SjN-eB-DVY" firstAttribute="bottom" secondItem="sgX-oj-zxo" secondAttribute="top" id="qhi-1J-zpQ"/>
                             <constraint firstItem="SjN-eB-DVY" firstAttribute="leading" secondItem="ILW-9E-HiI" secondAttribute="leading" id="yrY-aP-Ho5"/>
@@ -122,7 +117,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="SjN-eB-DVY" id="R9A-5A-dFN"/>
-                        <outlet property="spinner" destination="qlP-gE-lAe" id="Xwu-ve-rz6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHS-6g-vsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
