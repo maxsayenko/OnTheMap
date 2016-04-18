@@ -16,4 +16,11 @@ struct UIHelper {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         controller.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    static func showOverwriteMessage(controller: UIViewController, message: String, handler: ((UIAlertAction) -> Void)?) -> Void {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.Default, handler: handler))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        controller.presentViewController(alertController, animated: true, completion: nil)
+    }
 }
