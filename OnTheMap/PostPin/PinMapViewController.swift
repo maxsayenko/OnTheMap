@@ -12,13 +12,30 @@ import MapKit
 class PinMapViewController: UIViewController, MKMapViewDelegate {
     var userName: (firstName: String, lastName: String)?
     var placemark: CLPlacemark? = nil
+    var locationString: String?
     
+    var pin: MKAnnotation?
+
     @IBOutlet var linkTextField: UITextField!
 
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func submitClicked(sender: UIButton) {
-        print("submitting")
+        let lat = (pin?.coordinate.latitude)! as Double
+        let long = (pin?.coordinate.longitude)! as Double
+        let locationId: String? = SharedModel.sharedInstance.user?.postedLocationId
+        
+        UdacityNetworkHelper.sendStudentLocation(locationId, uniqueKey: "qwert", firstName: userName!.firstName, lastName: userName!.lastName, mapString: locationString!, mediaURL: linkTextField.text!, lat: lat, long: long) { (objectId, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                performUIUpdatesOnMain({ () -> Void in
+                    UIHelper.showErrorMessage(self, message: errorMessage)
+                })
+                return
+            }
+            
+            SharedModel.sharedInstance.user?.postedLocationId = objectId
+            self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
@@ -34,8 +51,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(MKPlacemark(placemark: placemark!))
         //mapView.showAnnotations(mapView.annotations, animated: true)
         
-        // get the particular pin that was tapped
-        let pinToZoomOn = mapView.annotations[0]
+        pin = mapView.annotations[0]
         
         // optionally you can set your own boundaries of the zoom
         let span = MKCoordinateSpanMake(2, 2)
@@ -44,7 +60,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         // let span = mapView.region.span
         
         // now move the map
-        let region = MKCoordinateRegion(center: pinToZoomOn.coordinate, span: span)
+        let region = MKCoordinateRegion(center: pin!.coordinate, span: span)
         mapView.setRegion(region, animated: true)
         
     }
