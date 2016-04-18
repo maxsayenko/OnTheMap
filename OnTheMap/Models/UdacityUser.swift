@@ -12,4 +12,11 @@ struct UdacityUser {
     let sessionId: String
     var firstName: String? = ""
     var lastName: String? = ""
+    var postedLocationId: String? = ""
+    
+    init(userId: String, sessionExpiration: String, sessionId: String) {
+        self.userId = userId
+        self.sessionExpiration = sessionExpiration
+        self.sessionId = sessionId
+    }
 }

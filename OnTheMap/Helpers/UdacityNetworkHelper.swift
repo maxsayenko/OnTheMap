@@ -51,7 +51,7 @@ struct UdacityNetworkHelper {
             if let accountKey = parsedData["account"]!!["key"] as? String,
                 let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
                 let sessionId = parsedData["session"]!!["id"] as? String {
-                    let user = UdacityUser(userId: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId, firstName: nil, lastName: nil)
+                    let user = UdacityUser(userId: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
                     
                     // Got the user.
                     completionHandler(user: user, errorString: nil)
@@ -151,7 +151,27 @@ struct UdacityNetworkHelper {
     }
     
     static func postStudentLocation() {
+        let headers = [
+            "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
+            "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY",
+            "Content-Type" : "application/json"
+        ]
         
+        let data = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com/user1\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+        
+        Network.post("https://api.parse.com/1/classes/StudentLocation", headers: headers, data: data) { (data, errorString) -> Void in
+            var parsedData: NSDictionary = NSDictionary()
+            if let newData = data as! NSData? {
+                do {
+                    parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
+                } catch {
+                    //completionHandler(students: nil, errorString: BAD_DATA)
+                    return
+                }
+            }
+            
+            print(parsedData)
+        }
     }
     
     static func logoutUdacity(completionHandler: (isSuccessful: Bool, errorString: String?) -> Void) {

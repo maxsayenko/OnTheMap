@@ -21,8 +21,19 @@ class MapViewController: UIViewController {
     
     @IBAction func pinClicked(sender: UIBarButtonItem) {
         let postPinScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("postPinViewController"))! as! PostPinViewController
-        postPinScreen.name = ""
-        self.presentViewController(postPinScreen, animated: false, completion: nil)
+
+        var userName: (firstName: String, lastName: String)?
+        if let user = SharedModel.sharedInstance.user {
+            userName = (firstName: user.firstName!, lastName: user.lastName!)
+        }
+
+        let message = "User: \(userName!.firstName) \(userName!.lastName) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?"
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            self.presentViewController(postPinScreen, animated: true, completion: nil)
+        }))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
