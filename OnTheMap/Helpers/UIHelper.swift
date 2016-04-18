@@ -23,4 +23,19 @@ struct UIHelper {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         controller.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    static func getLoadingState(view: UIView) -> (overlay: UIView, spinner: UIActivityIndicatorView) {
+        let spinner: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let overlay = UIView(frame: view.frame)
+        
+        overlay.backgroundColor = UIColor.blackColor()
+        overlay.alpha = 0.8
+        overlay.hidden = true
+        
+        spinner.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 25, y: UIScreen.mainScreen().bounds.height/2 - 50, width: 50, height: 50)
+        overlay.addSubview(spinner)
+        view.addSubview(overlay)
+        
+        return (overlay: overlay, spinner: spinner)
+    }
 }
