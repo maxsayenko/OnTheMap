@@ -10,9 +10,7 @@ import UIKit
 import MapKit
 
 class PinMapViewController: UIViewController, MKMapViewDelegate {
-    var firstName: String = ""
-    var lastName: String = ""
-    
+    var userName: (firstName: String, lastName: String)?
     var placemark: CLPlacemark? = nil
     
     @IBOutlet var linkTextField: UITextField!
