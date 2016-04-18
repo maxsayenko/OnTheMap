@@ -33,8 +33,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
-            SharedModel.sharedInstance.user?.postedLocationId = objectId
-            self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            performUIUpdatesOnMain({ () -> Void in
+                SharedModel.sharedInstance.user?.postedLocationId = objectId
+                self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            });
         }
     }
     
