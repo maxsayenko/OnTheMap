@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
         overlay!.backgroundColor = UIColor.blackColor()
         overlay!.alpha = 0.8
         spinner.hidden = true
-        
+
         getData()
     }
     

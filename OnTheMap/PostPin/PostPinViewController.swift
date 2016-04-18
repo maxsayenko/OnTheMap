@@ -14,7 +14,6 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
     var name: String = ""
     
     @IBAction func cancelClicked(sender: UIButton) {
-        print(self.presentingViewController)
         dismissViewControllerAnimated(true, completion: {})
     }
     

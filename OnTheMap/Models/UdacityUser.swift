@@ -7,7 +7,9 @@
 //
 
 struct UdacityUser {
-    let accountKey: String
+    let userId: String
     let sessionExpiration: String
     let sessionId: String
+    var firstName: String? = ""
+    var lastName: String? = ""
 }

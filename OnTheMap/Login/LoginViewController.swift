@@ -37,9 +37,24 @@ class LoginViewController: UIViewController {
             
             SharedModel.sharedInstance.user = user
             
-            performUIUpdatesOnMain({ () -> Void in
-                self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
-            })
+            if let user = SharedModel.sharedInstance.user {
+                UdacityNetworkHelper.getUdacityUser(user.userId) { (userInfo, errorString) -> Void in
+                    if let errorMessage = errorString where errorString != nil {
+                        performUIUpdatesOnMain({ () -> Void in
+                            UIHelper.showErrorMessage(self, message: errorMessage)
+                            self.setUIState(isEnabled: true)
+                        })
+                        return
+                    }
+                    
+                    SharedModel.sharedInstance.user?.firstName = userInfo!.firstName
+                    SharedModel.sharedInstance.user?.lastName = userInfo!.lastName
+                    
+                    performUIUpdatesOnMain({ () -> Void in
+                        self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+                    })
+                }
+            }
         }
     }
     

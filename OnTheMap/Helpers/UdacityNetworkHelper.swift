@@ -11,6 +11,7 @@ struct UdacityNetworkHelper {
     static let EMPTY_EMAIL_PASSWORD = "Email and password are required"
     static let BAD_DATA = "Error in reading response"
     static let UNKNOWN_ERROR = "Something went wrong"
+    static let MISSING_USERID = "User Id is missing"
     
     static func getUdacitySession(email: String, password: String, completionHandler: (user: UdacityUser?, errorString: String?) -> Void) {
         guard (!email.isEmpty && !password.isEmpty) else {
@@ -25,6 +26,11 @@ struct UdacityNetworkHelper {
             "Content-Type" : "application/json"
         ]
         Network.post("https://www.udacity.com/api/session", headers: headers, data: data) { data, errorString in
+            if let errorMessage = errorString where errorString != nil {
+                completionHandler(user: nil, errorString: errorMessage)
+                return
+            }
+            
             /* subset response data! */
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
             var parsedData: AnyObject
@@ -45,7 +51,7 @@ struct UdacityNetworkHelper {
             if let accountKey = parsedData["account"]!!["key"] as? String,
                 let sessionExpiration = parsedData["session"]!!["expiration"] as? String,
                 let sessionId = parsedData["session"]!!["id"] as? String {
-                    let user = UdacityUser(accountKey: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId)
+                    let user = UdacityUser(userId: accountKey, sessionExpiration: sessionExpiration, sessionId: sessionId, firstName: nil, lastName: nil)
                     
                     // Got the user.
                     completionHandler(user: user, errorString: nil)
@@ -54,6 +60,40 @@ struct UdacityNetworkHelper {
             
             // Just in case of unknown scenarios
             completionHandler(user: nil, errorString: UNKNOWN_ERROR)
+        }
+    }
+    
+    static func getUdacityUser(userId: String, completionHandler: (userInfo: (firstName: String, lastName: String)? , errorString: String?) -> Void) {
+        guard (!userId.isEmpty) else {
+            completionHandler(userInfo: nil, errorString: MISSING_USERID)
+            return
+        }
+        
+        //TODO
+        let url = "https://www.udacity.com/api/users/\(userId)"
+        Network.get(url) { (data, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                completionHandler(userInfo: nil, errorString: errorMessage)
+                return
+            }
+            
+            /* subset response data! */
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            var parsedData: AnyObject
+            
+            do {
+                parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+            } catch {
+                completionHandler(userInfo: nil, errorString: BAD_DATA)
+                return
+            }
+            
+            if let user = parsedData["user"] as? NSDictionary {
+                if let firstName = user["first_name"] as? String,
+                    let lastName = user["last_name"] as? String {
+                        completionHandler(userInfo: (firstName, lastName), errorString: nil)
+                }
+            }
         }
     }
     
@@ -84,26 +124,34 @@ struct UdacityNetworkHelper {
         ]
         //TODO: Move to the settings
         Network.get("https://api.parse.com/1/classes/StudentLocation?limit=100&order=-updatedAt", headers: headers) { (data, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                completionHandler(students: nil, errorString: errorMessage)
+                return
+            }
+            
+            var parsedData: NSDictionary = NSDictionary()
             if let newData = data as! NSData? {
-                var parsedData: NSDictionary
                 do {
                     parsedData = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
                 } catch {
                     completionHandler(students: nil, errorString: BAD_DATA)
                     return
                 }
+            }
 
-                if let results = parsedData["results"] as! NSArray? {
-                    
-                    let students = results.map({ (studentData) -> StudentInformation in
-                        return StudentInformation(studentInfo: studentData as! NSDictionary)
-                    })
-                    
-                    completionHandler(students: students, errorString: nil)
-                    return
-                }
+            if let results = parsedData["results"] as! NSArray? {
+                let students = results.map({ (studentData) -> StudentInformation in
+                    return StudentInformation(studentInfo: studentData as! NSDictionary)
+                })
+                
+                completionHandler(students: students, errorString: nil)
+                return
             }
         }
+    }
+    
+    static func postStudentLocation() {
+        
     }
     
     static func logoutUdacity(completionHandler: (isSuccessful: Bool, errorString: String?) -> Void) {

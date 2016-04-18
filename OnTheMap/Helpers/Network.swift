@@ -46,6 +46,7 @@ struct Network {
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
+            // TODO: Add checks on response
             // Got an Error. Terminate.
             if (error != nil) {
                 completionHandler(data: nil, errorString: error?.localizedDescription)
