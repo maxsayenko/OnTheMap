@@ -12,7 +12,6 @@ import MapKit
 class PinMapViewController: UIViewController, MKMapViewDelegate {
     var delegate: PostPinModalDelegate? = nil
     var overlay: UIView?
-    var spinner: UIActivityIndicatorView?
     
     var userName: (firstName: String, lastName: String)?
     var placemark: CLPlacemark? = nil
@@ -40,8 +39,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
-            print(objectId)
-            
             performUIUpdatesOnMain({ () -> Void in
                 self.setUIState(isEnabled: true)
                 SharedModel.sharedInstance.user?.postedLocationId = objectId
@@ -60,9 +57,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewDidLoad() {
-        let loadingState = UIHelper.getLoadingState(view)
-        overlay = loadingState.overlay
-        spinner = loadingState.spinner
+        overlay = UIHelper.getLoadingState(view).overlay
         
         linkTextField.backgroundColor = UIColor.clearColor()
         let placeholder = NSAttributedString(string: "Enter a Link to Share Here", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
@@ -88,12 +83,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     
     func setUIState(isEnabled isEnabled: Bool) {
         overlay?.hidden = isEnabled
-        
-        if(isEnabled) {
-            spinner!.stopAnimating()
-        } else {
-            spinner!.startAnimating()
-        }
     }
     
     // Dismissing keyboard

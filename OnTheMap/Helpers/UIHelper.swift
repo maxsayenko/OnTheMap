@@ -26,6 +26,7 @@ struct UIHelper {
         overlay.hidden = true
         
         spinner.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 25, y: UIScreen.mainScreen().bounds.height/2 - 50, width: 50, height: 50)
+        spinner.startAnimating()
         overlay.addSubview(spinner)
         view.addSubview(overlay)
         

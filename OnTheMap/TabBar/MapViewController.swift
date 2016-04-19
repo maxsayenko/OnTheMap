@@ -11,7 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController {
     var overlay: UIView?
-    var spinner: UIActivityIndicatorView?
     
     @IBOutlet var mapView: MKMapView!
     
@@ -43,10 +42,7 @@ class MapViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        let loadingState = UIHelper.getLoadingState(view)
-        overlay = loadingState.overlay
-        spinner = loadingState.spinner
-
+        overlay = UIHelper.getLoadingState(view).overlay
         getData()
     }
     
@@ -73,18 +69,11 @@ class MapViewController: UIViewController {
             barItem.enabled = isEnabled
         }
         
-        spinner!.hidden = isEnabled
         mapView.zoomEnabled = isEnabled
         mapView.scrollEnabled = isEnabled
         mapView.userInteractionEnabled = isEnabled
         
         overlay?.hidden = isEnabled
-        
-        if(isEnabled) {
-            spinner!.stopAnimating()
-        } else {
-            spinner!.startAnimating()
-        }
     }
     
     func addPins(infos: [StudentInformation]) {

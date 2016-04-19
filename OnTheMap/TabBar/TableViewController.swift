@@ -10,7 +10,6 @@ import UIKit
 
 class TableViewController: UITableViewController {
     var overlay: UIView?
-    var spinner: UIActivityIndicatorView?
     
     @IBAction func refreshCliked(sender: UIBarButtonItem) {
         getData()
@@ -33,9 +32,7 @@ class TableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        let loadingState = UIHelper.getLoadingState(view)
-        overlay = loadingState.overlay
-        spinner = loadingState.spinner
+        overlay = UIHelper.getLoadingState(view).overlay
     }
     
     func getData() {
@@ -58,14 +55,7 @@ class TableViewController: UITableViewController {
         for barItem in (tabBarController?.tabBar.items!)! {
             barItem.enabled = isEnabled
         }
-        
         overlay?.hidden = isEnabled
-        
-        if(isEnabled) {
-            spinner!.stopAnimating()
-        } else {
-            spinner!.startAnimating()
-        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
