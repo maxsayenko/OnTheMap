@@ -20,23 +20,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func pinClicked(sender: UIBarButtonItem) {
-        var userName: (firstName: String, lastName: String)?
-        if let user = SharedModel.sharedInstance.user {
-            userName = (firstName: user.firstName!, lastName: user.lastName!)
-        }
-
-        let postPinScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("postPinViewController"))! as! PostPinViewController
-        postPinScreen.userName = userName
-        postPinScreen.delegate = self
-        
-        if(SharedModel.sharedInstance.user?.postedLocationId != nil) {
-            let message = "User: \(userName!.firstName) \(userName!.lastName) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?"
-            UIHelper.showOverwriteMessage(self, message: message, handler: { (_) -> Void in
-                self.presentViewController(postPinScreen, animated: true, completion: nil)
-            })
-        } else {
-            self.presentViewController(postPinScreen, animated: true, completion: nil)
-        }
+        UIHelper.launchPostPinModal(self)
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
@@ -137,7 +121,6 @@ class MapViewController: UIViewController {
 
 extension MapViewController: PostPinModalDelegate {
     func refreshData() {
-        print("refreshing")
         getData()
     }
 }

@@ -17,6 +17,7 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func pinClicked(sender: UIBarButtonItem) {
+        UIHelper.launchPostPinModal(self)
     }
     
     @IBAction func logoutClicked(sender: UIBarButtonItem) {
@@ -90,5 +91,11 @@ class TableViewController: UITableViewController {
                 UIHelper.showErrorMessage(self, message: "Bad URL address")
             }
         }
+    }
+}
+
+extension TableViewController: PostPinModalDelegate {
+    func refreshData() {
+        getData()
     }
 }
