@@ -11,6 +11,7 @@
 		E202AFDB1CABB4390050124A /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202AFDA1CABB4390050124A /* StudentInformation.swift */; };
 		E20BE3D61CB8CB9A005BF4E1 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BE3D51CB8CB9A005BF4E1 /* SharedModel.swift */; };
 		E219160D1CC5D00D00B5D98B /* PostPinModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219160C1CC5D00D00B5D98B /* PostPinModalDelegate.swift */; };
+		E219160F1CC5F63500B5D98B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219160E1CC5F63500B5D98B /* Config.swift */; };
 		E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* TableViewController.swift */; };
 		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
@@ -31,6 +32,7 @@
 		E202AFDA1CABB4390050124A /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		E20BE3D51CB8CB9A005BF4E1 /* SharedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		E219160C1CC5D00D00B5D98B /* PostPinModalDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinModalDelegate.swift; sourceTree = "<group>"; };
+		E219160E1CC5F63500B5D98B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E247E03C1C8EB889003358F1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E247E03F1C8EBE84003358F1 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */,
 				E202AFD81CABB26C0050124A /* Network.swift */,
 				E29819311CC1945900DA77B7 /* UIHelper.swift */,
+				E219160E1CC5F63500B5D98B /* Config.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */,
 				E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */,
+				E219160F1CC5F63500B5D98B /* Config.swift in Sources */,
 				E202AFD91CABB26C0050124A /* Network.swift in Sources */,
 				E29819371CC1BA9B00DA77B7 /* PinMapViewController.swift in Sources */,
 				E29819321CC1945900DA77B7 /* UIHelper.swift in Sources */,

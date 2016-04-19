@@ -19,13 +19,12 @@ struct UdacityNetworkHelper {
             return
         }
         
-        // TODO: Move Url to Config class
         let data = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}"
         let headers = [
             "Accept" : "application/json",
             "Content-Type" : "application/json"
         ]
-        Network.post("https://www.udacity.com/api/session", headers: headers, data: data) { data, errorString in
+        Network.post(Config.UdacityUrls.getSession, headers: headers, data: data) { data, errorString in
             if let errorMessage = errorString where errorString != nil {
                 completionHandler(user: nil, errorString: errorMessage)
                 return
@@ -69,8 +68,7 @@ struct UdacityNetworkHelper {
             return
         }
         
-        //TODO
-        let url = "https://www.udacity.com/api/users/\(userId)"
+        let url = Config.UdacityUrls.getUser + userId
         Network.get(url) { (data, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 completionHandler(userInfo: nil, errorString: errorMessage)
@@ -119,11 +117,11 @@ struct UdacityNetworkHelper {
     
     static func getStudentsData(completionHandler: (students: [StudentInformation]?, errorString: String?) -> Void) {
         let headers = [
-            "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
-            "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+            "X-Parse-Application-Id" : Config.ParseHeaders.applicationId,
+            "X-Parse-REST-API-Key" : Config.ParseHeaders.apiKey
         ]
-        //TODO: Move to the settings
-        Network.get("https://api.parse.com/1/classes/StudentLocation?limit=100&order=-updatedAt", headers: headers) { (data, errorString) -> Void in
+
+        Network.get(Config.ParseUrls.getStudents, headers: headers) { (data, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 completionHandler(students: nil, errorString: errorMessage)
                 return
@@ -150,21 +148,20 @@ struct UdacityNetworkHelper {
         }
     }
     
-    //TODO
     static func sendStudentLocation(locationId: String?, uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: String, lat: Double, long: Double, completionHandler: (objectId: String?, errorString: String?) -> Void) {
         
         let headers = [
-            "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
-            "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY",
+            "X-Parse-Application-Id" : Config.ParseHeaders.applicationId,
+            "X-Parse-REST-API-Key" : Config.ParseHeaders.apiKey,
             "Content-Type" : "application/json"
         ]
         
         let data = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(lat), \"longitude\": \(long)}"
         
-        var url = "https://api.parse.com/1/classes/StudentLocation"
+        var url = Config.ParseUrls.sendStudentInfo
         var method = "POST"
         if let locationId = locationId {
-            url = "https://api.parse.com/1/classes/StudentLocation/\(locationId)"
+            url = Config.ParseUrls.sendStudentInfo + locationId
             method = "PUT"
         }
         
@@ -197,7 +194,6 @@ struct UdacityNetworkHelper {
         }
     }
     
-    //TODO
     static func logoutUdacity(completionHandler: (isSuccessful: Bool, errorString: String?) -> Void) {
         var headers: [String: String] = [String: String]()
         
@@ -212,7 +208,7 @@ struct UdacityNetworkHelper {
             headers["X-XSRF-TOKEN"] = xsrfCookie.value
         }
         
-        Network.delete("https://www.udacity.com/api/session", headers: headers) { (data, errorString) -> Void in
+        Network.delete(Config.UdacityUrls.getSession, headers: headers) { (data, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 completionHandler(isSuccessful: false, errorString: errorMessage)
                 return
