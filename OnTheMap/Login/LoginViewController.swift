@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
         self.setUIState(isEnabled: true)
     }
     
-    //TODO: Block UI and show spinner while loading
     func getSession(email: String, password: String) {
         UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
             if let errorMessage = errorString where errorString != nil {
