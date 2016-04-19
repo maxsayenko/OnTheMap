@@ -12,6 +12,7 @@ import MapKit
 class PostPinViewController: UIViewController, UITextFieldDelegate {
     var delegate: PostPinModalDelegate? = nil
     var userName: (firstName: String, lastName: String)?
+    var overlay: UIView?
     
     @IBAction func cancelClicked(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: {})
@@ -28,8 +29,9 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
         
         let address = locationTextField.text
         let geocoder = CLGeocoder()
+        setUIState(isEnabled: false)
         geocoder.geocodeAddressString(address!) { (placemarks, error) -> Void in
-            
+            self.setUIState(isEnabled: true)
             if(error != nil) {
                 UIHelper.showErrorMessage(self, message: "Could Not Geocode the String.")
                 return
@@ -59,6 +61,12 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
         locationTextField.backgroundColor = UIColor.clearColor()
         let placeholder = NSAttributedString(string: "Enter Your Location Here", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
         locationTextField.attributedPlaceholder = placeholder
+        
+        overlay = UIHelper.getLoadingState(view).overlay
+    }
+    
+    func setUIState(isEnabled isEnabled: Bool) {
+        overlay?.hidden = isEnabled
     }
     
     // Dismissing keyboard
