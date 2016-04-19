@@ -31,6 +31,10 @@ class TableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         overlay = UIHelper.getLoadingState(view).overlay
     }
