@@ -69,7 +69,6 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as UITableViewCell
         
-        // TODO: error checks
         let model = SharedModel.sharedInstance.students![indexPath.row]
         
         cell.textLabel?.text = "\(model.firstName) \(model.lastName)"

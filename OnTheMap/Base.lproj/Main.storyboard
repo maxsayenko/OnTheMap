@@ -19,15 +19,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="max.sayenko@gmail.com" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EN6-v6-aZU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EN6-v6-aZU">
                                 <rect key="frame" x="12" y="62" width="296" height="30"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.86274509803921573" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.85066915655150954" green="0.74493165546552442" blue="0.61472394664891483" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Wnz-zs-wVb"/>
                                     <constraint firstAttribute="height" constant="30" id="jOo-mQ-z38"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oR-Ua-OuC">
                                 <rect key="frame" x="12" y="144" width="296" height="30"/>
@@ -44,12 +45,13 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3A-Hd-jG2">
                                 <rect key="frame" x="12" y="100" width="296" height="30"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.86274509803921573" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.85066915655150954" green="0.74493165546552442" blue="0.61472394664891483" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="VBj-Me-8AS"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yvc-i3-trJ"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="LX7-gz-7hW">
@@ -273,7 +275,7 @@
                                         <color key="backgroundColor" red="0.9960784912109375" green="0.9960784912109375" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
