@@ -50,10 +50,21 @@ struct Network {
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            // TODO: Add checks on response
             // Got an Error. Terminate.
-            if (error != nil) {
+            guard (error == nil) else {
                 completionHandler(data: nil, errorString: error?.localizedDescription)
+                return
+            }
+            
+            // Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                completionHandler(data: nil, errorString: "Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            // Was there any data returned? */
+            guard let data = data else {
+                completionHandler(data: nil, errorString: "No data was returned by the request!")
                 return
             }
             
