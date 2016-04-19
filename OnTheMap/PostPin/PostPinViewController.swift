@@ -17,18 +17,18 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
         dismissViewControllerAnimated(true, completion: {})
     }
     
+    @IBOutlet var locationTextField: UITextField!
     @IBOutlet var label: UILabel!
-    @IBOutlet var locationText: UITextView!
     
     @IBAction func finClicked(sender: UIButton) {
-        if(locationText.text.isEmpty) {
+        if(locationTextField.text!.isEmpty) {
             UIHelper.showErrorMessage(self, message: "Must Enter a Location")
             return
         }
         
-        let address = locationText.text
+        let address = locationTextField.text
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemarks, error) -> Void in
+        geocoder.geocodeAddressString(address!) { (placemarks, error) -> Void in
             
             if(error != nil) {
                 UIHelper.showErrorMessage(self, message: "Could Not Geocode the String.")
@@ -37,7 +37,7 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             
             let pinMapScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("pinMapViewController"))! as! PinMapViewController
             pinMapScreen.userName = self.userName
-            pinMapScreen.locationString = self.locationText.text
+            pinMapScreen.locationString = self.locationTextField.text
             pinMapScreen.delegate = self.delegate
             
             if let placemark = placemarks?.first {
@@ -51,14 +51,14 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         let boldWord = "studying"
         let text : NSString = label.text! as NSString
-
         let boldWordRange = text.rangeOfString(boldWord) as NSRange
-        
         let attributedString = NSMutableAttributedString(string: label.text!, attributes: nil)
-        
         attributedString.setAttributes([ NSFontAttributeName : UIFont.boldSystemFontOfSize(22)], range: boldWordRange)
-        
         label.attributedText = attributedString
+        
+        locationTextField.backgroundColor = UIColor.clearColor()
+        let placeholder = NSAttributedString(string: "Enter Your Location Here", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+        locationTextField.attributedPlaceholder = placeholder
     }
     
     // Dismissing keyboard

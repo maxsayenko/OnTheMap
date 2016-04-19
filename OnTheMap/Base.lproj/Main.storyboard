@@ -42,7 +42,7 @@
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkS-HI-sPA"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="zx927cv" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3A-Hd-jG2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3A-Hd-jG2">
                                 <rect key="frame" x="12" y="100" width="296" height="30"/>
                                 <color key="backgroundColor" red="0.9882352941176471" green="0.86274509803921573" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -150,6 +150,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smb-4Q-Daz">
+                                <rect key="frame" x="0.0" y="86" width="320" height="415"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-et-sn7">
+                                        <rect key="frame" x="8" y="8" width="304" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="aYA-L4-ll3"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Gyh-et-sn7" firstAttribute="top" secondItem="smb-4Q-Daz" secondAttribute="topMargin" id="2nn-wC-6Qs"/>
+                                    <constraint firstItem="Gyh-et-sn7" firstAttribute="leading" secondItem="smb-4Q-Daz" secondAttribute="leadingMargin" id="Kdi-my-sfA"/>
+                                    <constraint firstItem="Gyh-et-sn7" firstAttribute="trailing" secondItem="smb-4Q-Daz" secondAttribute="trailingMargin" id="N79-lm-qYP"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A03-nF-nCQ">
                                 <rect key="frame" x="260" y="8" width="60" height="30"/>
                                 <constraints>
@@ -160,13 +180,6 @@
                                     <action selector="cancelClicked:" destination="3KD-Dd-rx3" eventType="touchUpInside" id="Jj7-lj-sXr"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZHN-39-bag">
-                                <rect key="frame" x="-8" y="119" width="336" height="374"/>
-                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLN-4o-QPq">
                                 <rect key="frame" x="70" y="515" width="180" height="33"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -194,8 +207,8 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Where are you studying today?">
                                         <attributes>
-                                            <color key="NSColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="19" name="HelveticaNeue"/>
+                                            <color key="NSColor" red="0.11372549019607843" green="0.38431372549019605" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -206,22 +219,22 @@
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="1Xk-6Y-gaN"/>
+                            <constraint firstItem="sLN-4o-QPq" firstAttribute="top" secondItem="smb-4Q-Daz" secondAttribute="bottom" constant="14" id="2lI-fC-NHr"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="A03-nF-nCQ" secondAttribute="bottom" constant="-10" id="59z-8L-3S5"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="6tE-oU-MbE"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="top" secondItem="nMV-Gd-Lmp" secondAttribute="top" constant="28" id="LzB-Xt-cRm"/>
                             <constraint firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="MFj-Rc-A1q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZHN-39-bag" secondAttribute="trailing" constant="-24" id="Mqf-QB-nxS"/>
                             <constraint firstAttribute="bottom" secondItem="sLN-4o-QPq" secondAttribute="bottom" constant="20" symbolic="YES" id="NRz-aj-uRm"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="-24" id="Sfc-j6-z0Q"/>
                             <constraint firstItem="7Xg-ig-4T9" firstAttribute="leading" secondItem="nMV-Gd-Lmp" secondAttribute="leadingMargin" constant="84" id="cZe-Gq-R6C"/>
-                            <constraint firstItem="ZHN-39-bag" firstAttribute="top" secondItem="7Xg-ig-4T9" secondAttribute="bottom" constant="31" id="fwj-o6-pB8"/>
+                            <constraint firstItem="smb-4Q-Daz" firstAttribute="centerX" secondItem="sLN-4o-QPq" secondAttribute="centerX" id="dmO-tX-6iF"/>
+                            <constraint firstItem="smb-4Q-Daz" firstAttribute="top" secondItem="A03-nF-nCQ" secondAttribute="bottom" constant="48" id="mSf-U4-Kr4"/>
                             <constraint firstItem="sLN-4o-QPq" firstAttribute="centerX" secondItem="nMV-Gd-Lmp" secondAttribute="centerX" id="oMc-aL-gRE"/>
-                            <constraint firstItem="VvW-rE-4KI" firstAttribute="top" secondItem="ZHN-39-bag" secondAttribute="bottom" constant="75" id="vfH-hy-eyb"/>
+                            <constraint firstItem="smb-4Q-Daz" firstAttribute="trailing" secondItem="A03-nF-nCQ" secondAttribute="trailing" id="oVo-ss-dmd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rlr-6c-LT3"/>
                     <connections>
-                        <outlet property="locationText" destination="ZHN-39-bag" id="flu-vO-6l1"/>
+                        <outlet property="label" destination="7Xg-ig-4T9" id="r0b-4f-fB1"/>
+                        <outlet property="locationTextField" destination="Gyh-et-sn7" id="pgO-Cg-R48"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2T-pZ-COX" userLabel="First Responder" sceneMemberID="firstResponder"/>
