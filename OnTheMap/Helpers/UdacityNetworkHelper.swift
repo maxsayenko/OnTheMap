@@ -178,6 +178,12 @@ struct UdacityNetworkHelper {
                 }
             }
             
+            // Got error response from Udacity. Terminate.
+            if let error = parsedData["error"] as? String {
+                completionHandler(objectId: nil, errorString: error)
+                return
+            }
+            
             if let locationId = locationId {
                 completionHandler(objectId: locationId, errorString: nil)
                 return

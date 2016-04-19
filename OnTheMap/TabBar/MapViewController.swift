@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
 
         let postPinScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("postPinViewController"))! as! PostPinViewController
         postPinScreen.userName = userName
+        postPinScreen.delegate = self
         
         if(SharedModel.sharedInstance.user?.postedLocationId != nil) {
             let message = "User: \(userName!.firstName) \(userName!.lastName) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?"
@@ -131,6 +132,13 @@ class MapViewController: UIViewController {
         objectAnnotation.title = "\(info.firstName) \(info.lastName)"
         objectAnnotation.subtitle = info.mediaURL
         mapView.addAnnotation(objectAnnotation)
+    }
+}
+
+extension MapViewController: PostPinModalDelegate {
+    func refreshData() {
+        print("refreshing")
+        getData()
     }
 }
 

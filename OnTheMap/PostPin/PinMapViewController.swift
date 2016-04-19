@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class PinMapViewController: UIViewController, MKMapViewDelegate {
+    var delegate: PostPinModalDelegate? = nil
     var overlay: UIView?
     var spinner: UIActivityIndicatorView?
     
@@ -39,16 +40,23 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
+            print(objectId)
+            
             performUIUpdatesOnMain({ () -> Void in
                 self.setUIState(isEnabled: true)
                 SharedModel.sharedInstance.user?.postedLocationId = objectId
-                self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                
+                self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.delegate?.refreshData()
+                })
             });
         }
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
-        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+            print(self)
+        })
     }
     
     override func viewDidLoad() {

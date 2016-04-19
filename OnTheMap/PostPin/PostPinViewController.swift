@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class PostPinViewController: UIViewController, UITextFieldDelegate {
+    var delegate: PostPinModalDelegate? = nil
     var userName: (firstName: String, lastName: String)?
     
     @IBAction func cancelClicked(sender: UIButton) {
@@ -36,6 +37,7 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             let pinMapScreen = (self.storyboard?.instantiateViewControllerWithIdentifier("pinMapViewController"))! as! PinMapViewController
             pinMapScreen.userName = self.userName
             pinMapScreen.locationString = self.locationText.text
+            pinMapScreen.delegate = self.delegate
             
             if let placemark = placemarks?.first {
                 pinMapScreen.placemark = placemark
