@@ -17,6 +17,7 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
         dismissViewControllerAnimated(true, completion: {})
     }
     
+    @IBOutlet var label: UILabel!
     @IBOutlet var locationText: UITextView!
     
     @IBAction func finClicked(sender: UIButton) {
@@ -45,6 +46,19 @@ class PostPinViewController: UIViewController, UITextFieldDelegate {
             
             self.presentViewController(pinMapScreen, animated: false, completion: nil)
         }
+    }
+    
+    override func viewDidLoad() {
+        let boldWord = "studying"
+        let text : NSString = label.text! as NSString
+
+        let boldWordRange = text.rangeOfString(boldWord) as NSRange
+        
+        let attributedString = NSMutableAttributedString(string: label.text!, attributes: nil)
+        
+        attributedString.setAttributes([ NSFontAttributeName : UIFont.boldSystemFontOfSize(22)], range: boldWordRange)
+        
+        label.attributedText = attributedString
     }
     
     // Dismissing keyboard
