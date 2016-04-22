@@ -166,6 +166,11 @@ struct UdacityNetworkHelper {
         }
         
         Network.request(url, headers: headers, method: method, data: data) { (data, errorString) -> Void in
+            if let errorMessage = errorString where errorString != nil {
+                completionHandler(objectId: nil, errorString: errorMessage)
+                return
+            }
+            
             var parsedData: NSDictionary = NSDictionary()
             if let newData = data as! NSData? {
                 do {
