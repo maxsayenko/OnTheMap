@@ -151,9 +151,14 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         if (control == view.rightCalloutAccessoryView) {
-            let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:urlString)!)
-            if(!didOpen) {
+            if let url = NSURL(string:urlString) {
+                let didOpen = UIApplication.sharedApplication().openURL(url)
+                if(!didOpen) {
+                    UIHelper.showErrorMessage(self, message: "Bad URL address")
+                }
+            } else {
                 UIHelper.showErrorMessage(self, message: "Bad URL address")
+                return
             }
         }
     }

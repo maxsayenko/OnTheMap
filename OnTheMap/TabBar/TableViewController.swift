@@ -79,9 +79,20 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            let didOpen = UIApplication.sharedApplication().openURL(NSURL(string:(cell.detailTextLabel?.text)!)!)
-            if(!didOpen) {
+            // Oddly can't use !cell.detailTextLabel?.text?.isEmpty here
+            guard let urlString = cell.detailTextLabel?.text where (cell.detailTextLabel?.text != nil) && (cell.detailTextLabel?.text!.isEmpty == false) else {
                 UIHelper.showErrorMessage(self, message: "Bad URL address")
+                return
+            }
+
+            if let url = NSURL(string:urlString) {
+                let didOpen = UIApplication.sharedApplication().openURL(url)
+                if(!didOpen) {
+                    UIHelper.showErrorMessage(self, message: "Bad URL address")
+                }
+            } else {
+                UIHelper.showErrorMessage(self, message: "Bad URL address")
+                return
             }
         }
     }
