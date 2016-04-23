@@ -36,6 +36,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
@@ -71,5 +72,10 @@
             </dict>
         </dict>
     </dict>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbauth2</string>
+    </array>
 </dict>
 </plist>

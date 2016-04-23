@@ -16,6 +16,8 @@
 		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
 		E2512B471CCC0973006CC28A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */; };
+		E2512B4A1CCC37EC006CC28A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2512B481CCC37EC006CC28A /* Bolts.framework */; };
+		E2512B4B1CCC37EC006CC28A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2512B491CCC37EC006CC28A /* FBSDKLoginKit.framework */; };
 		E292D0C81CABA32B0045750E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292D0C71CABA32B0045750E /* MapViewController.swift */; };
 		E29819321CC1945900DA77B7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819311CC1945900DA77B7 /* UIHelper.swift */; };
 		E29819351CC19BCE00DA77B7 /* PostPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */; };
@@ -39,6 +41,8 @@
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
 		E2512B451CCC01D1006CC28A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		E2512B481CCC37EC006CC28A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		E2512B491CCC37EC006CC28A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		E292D0C71CABA32B0045750E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E29819311CC1945900DA77B7 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2512B471CCC0973006CC28A /* FBSDKCoreKit.framework in Frameworks */,
+				E2512B4A1CCC37EC006CC28A /* Bolts.framework in Frameworks */,
+				E2512B4B1CCC37EC006CC28A /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +112,8 @@
 		E2512B421CCB3DFA006CC28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2512B481CCC37EC006CC28A /* Bolts.framework */,
+				E2512B491CCC37EC006CC28A /* FBSDKLoginKit.framework */,
 				E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */,
 			);
 			path = Frameworks;
