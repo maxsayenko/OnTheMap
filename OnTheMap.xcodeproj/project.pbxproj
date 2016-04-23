@@ -15,7 +15,7 @@
 		E247E03D1C8EB889003358F1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03C1C8EB889003358F1 /* TableViewController.swift */; };
 		E247E0401C8EBE84003358F1 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E03F1C8EBE84003358F1 /* UdacityUser.swift */; };
 		E247E0431C90139B003358F1 /* UdacityNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */; };
-		E2512B441CCB3E35006CC28A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2512B431CCB3E35006CC28A /* FBSDKCoreKit.framework */; };
+		E2512B471CCC0973006CC28A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */; };
 		E292D0C81CABA32B0045750E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292D0C71CABA32B0045750E /* MapViewController.swift */; };
 		E29819321CC1945900DA77B7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819311CC1945900DA77B7 /* UIHelper.swift */; };
 		E29819351CC19BCE00DA77B7 /* PostPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */; };
@@ -37,7 +37,8 @@
 		E247E03C1C8EB889003358F1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E247E03F1C8EBE84003358F1 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		E247E0421C90139B003358F1 /* UdacityNetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHelper.swift; sourceTree = "<group>"; };
-		E2512B431CCB3E35006CC28A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../Downloads/FacebookSDKs-iOS-20160412/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		E2512B451CCC01D1006CC28A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		E292D0C71CABA32B0045750E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E29819311CC1945900DA77B7 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E29819341CC19BCE00DA77B7 /* PostPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2512B441CCB3E35006CC28A /* FBSDKCoreKit.framework in Frameworks */,
+				E2512B471CCC0973006CC28A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +106,7 @@
 		E2512B421CCB3DFA006CC28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E2512B431CCB3E35006CC28A /* FBSDKCoreKit.framework */,
+				E2512B461CCC0973006CC28A /* FBSDKCoreKit.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -140,6 +141,7 @@
 		E2F063C31C7EE4330016460F /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				E2512B451CCC01D1006CC28A /* Bridging-Header.h */,
 				E247E0411C900FC1003358F1 /* Helpers */,
 				E247E03E1C8EBE5E003358F1 /* Models */,
 				E29819331CC19B4C00DA77B7 /* PostPin */,
@@ -351,10 +353,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nanoDegree.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "OnTheMap/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -362,10 +369,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nanoDegree.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "OnTheMap/Bridging-Header.h";
 			};
 			name = Release;
 		};
