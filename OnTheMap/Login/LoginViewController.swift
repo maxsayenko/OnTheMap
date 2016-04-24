@@ -19,19 +19,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBAction func loginPressed(sender: UIButton) {
-        setUIState(isEnabled: false)
-        getSession(emailText.text!, password: passwordText.text!)
+//        setUIState(isEnabled: false)
+//        getSession()
+//        let loginManager = FBSDKLoginManager()
+//        loginManager.logOut()
+        getSession(isFacebook: true)
     }
     
     override func viewDidLoad() {
         self.setUIState(isEnabled: true)
         
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
+        if (FBSDKAccessToken.currentAccessToken() != nil) {
+            print("already logged in")
+            print(FBSDKAccessToken.currentAccessToken().tokenString)
+            print(FBSDKAccessToken.currentAccessToken().appID)
             // User is already logged in, do work such as go to next view controller.
+            getSession(isFacebook: true)
         }
-        else
-        {
+        else {
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
@@ -44,20 +49,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
+        print(FBSDKAccessToken.currentAccessToken().tokenString)
         
         if ((error) != nil)
         {
-            // Process error
+            print("ERROR")
+            print(error)
         }
         else if result.isCancelled {
             // Handle cancellations
+            print("Canceled")
         }
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
+            if result.grantedPermissions.contains("email") {
+                print("Good")
+                print(result)
+                
             }
         }
     }
@@ -66,35 +75,52 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User Logged Out")
     }
     
-    func getSession(email: String, password: String) {
-        UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
-            if let errorMessage = errorString where errorString != nil {
-                performUIUpdatesOnMain({ () -> Void in
-                    UIHelper.showErrorMessage(self, message: errorMessage)
-                    self.setUIState(isEnabled: true)
-                })
-                return
+    
+    
+    
+    
+    func getSession(isFacebook isFacebook: Bool) {
+        let email = emailText.text!
+        let password = passwordText.text!
+        
+        if(isFacebook) {
+            UdacityNetworkHelper.getUdacitySessionWithFacebook({ (user, errorString) -> Void in
+                self.handleLogin(user, errorString: errorString)
+            })
+        } else {
+            UdacityNetworkHelper.getUdacitySession(email, password: password) { user, errorString in
+                self.handleLogin(user, errorString: errorString)
             }
-            
-            SharedModel.sharedInstance.user = user
-            
-            if let user = SharedModel.sharedInstance.user {
-                UdacityNetworkHelper.getUdacityUser(user.userId) { (userInfo, errorString) -> Void in
-                    if let errorMessage = errorString where errorString != nil {
-                        performUIUpdatesOnMain({ () -> Void in
-                            UIHelper.showErrorMessage(self, message: errorMessage)
-                            self.setUIState(isEnabled: true)
-                        })
-                        return
-                    }
-                    
-                    SharedModel.sharedInstance.user?.firstName = userInfo!.firstName
-                    SharedModel.sharedInstance.user?.lastName = userInfo!.lastName
-                    
+        }
+    }
+    
+    func handleLogin(user: UdacityUser?, errorString: String?) -> Void {
+        if let errorMessage = errorString where errorString != nil {
+            performUIUpdatesOnMain({ () -> Void in
+                UIHelper.showErrorMessage(self, message: errorMessage)
+                self.setUIState(isEnabled: true)
+            })
+            return
+        }
+        
+        SharedModel.sharedInstance.user = user
+        
+        if let user = SharedModel.sharedInstance.user {
+            UdacityNetworkHelper.getUdacityUser(user.userId) { (userInfo, errorString) -> Void in
+                if let errorMessage = errorString where errorString != nil {
                     performUIUpdatesOnMain({ () -> Void in
-                        self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+                        UIHelper.showErrorMessage(self, message: errorMessage)
+                        self.setUIState(isEnabled: true)
                     })
+                    return
                 }
+                
+                SharedModel.sharedInstance.user?.firstName = userInfo!.firstName
+                SharedModel.sharedInstance.user?.lastName = userInfo!.lastName
+                
+                performUIUpdatesOnMain({ () -> Void in
+                    self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
+                })
             }
         }
     }

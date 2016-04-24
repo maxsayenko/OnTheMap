@@ -11,6 +11,7 @@ import Foundation
 struct SharedModel {
     var students: [StudentInformation]?
     var user: UdacityUser?
+    var isFacebook: Bool = false
     
     static var sharedInstance = SharedModel()
 }
