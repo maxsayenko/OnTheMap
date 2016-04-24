@@ -6,6 +6,7 @@
 //  Copyright © 2016 Max Saienko. All rights reserved.
 //
 import Foundation
+import FBSDKLoginKit
 
 struct UdacityNetworkHelper {
     static let EMPTY_EMAIL_PASSWORD = "Email and password are required"
@@ -131,6 +132,14 @@ struct UdacityNetworkHelper {
     }
     
     static func logoutUdacity(completionHandler: (isSuccessful: Bool, errorString: String?) -> Void) {
+        // Facebook Logout flow
+        if(SharedModel.sharedInstance.isFacebook) {
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            completionHandler(isSuccessful: true, errorString: nil)
+            return
+        }
+        
         var headers: [String: String] = [String: String]()
         
         var xsrfCookie: NSHTTPCookie? = nil

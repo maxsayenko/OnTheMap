@@ -12,18 +12,27 @@ import FBSDKLoginKit
 
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
     @IBOutlet var emailText: UITextField!
     @IBOutlet var passwordText: UITextField!
     @IBOutlet var loginBtn: UIButton!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBAction func loginPressed(sender: UIButton) {
-//        setUIState(isEnabled: false)
-//        getSession()
-//        let loginManager = FBSDKLoginManager()
-//        loginManager.logOut()
-        getSession(isFacebook: true)
+        getSession(isFacebook: false)
+    }
+    
+    func setUIState(isEnabled isEnabled: Bool) {
+        spinner.hidden = isEnabled
+        emailText.enabled = isEnabled
+        passwordText.enabled = isEnabled
+        loginBtn.enabled = isEnabled
+        
+        if(isEnabled) {
+            spinner.stopAnimating()
+        } else {
+            spinner.startAnimating()
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -31,8 +40,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             print("already logged in")
-            print(FBSDKAccessToken.currentAccessToken().tokenString)
-            print(FBSDKAccessToken.currentAccessToken().appID)
             // User is already logged in, do work such as go to next view controller.
             getSession(isFacebook: true)
         }
@@ -45,41 +52,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    // Facebook Delegate Methods
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
-        print(FBSDKAccessToken.currentAccessToken().tokenString)
-        
-        if ((error) != nil)
-        {
-            print("ERROR")
-            print(error)
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-            print("Canceled")
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email") {
-                print("Good")
-                print(result)
-                
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-    
-    
-    
-    
-    
     func getSession(isFacebook isFacebook: Bool) {
+        setUIState(isEnabled: false)
+        SharedModel.sharedInstance.isFacebook = isFacebook
+        
         let email = emailText.text!
         let password = passwordText.text!
         
@@ -94,7 +70,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func handleLogin(user: UdacityUser?, errorString: String?) -> Void {
+    private func handleLogin(user: UdacityUser?, errorString: String?) -> Void {
         if let errorMessage = errorString where errorString != nil {
             performUIUpdatesOnMain({ () -> Void in
                 UIHelper.showErrorMessage(self, message: errorMessage)
@@ -124,18 +100,33 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
     }
-    
-    func setUIState(isEnabled isEnabled: Bool) {
-        spinner.hidden = isEnabled
-        emailText.enabled = isEnabled
-        passwordText.enabled = isEnabled
-        loginBtn.enabled = isEnabled
-        
-        if(isEnabled) {
-            spinner.stopAnimating()
-        } else {
-            spinner.startAnimating()
-        }
+}
 
+
+    // Facebook Delegate Methods
+extension LoginViewController {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        
+        if ((error) != nil) {
+            print("ERROR")
+            UIHelper.showErrorMessage(self, message: error.localizedDescription)
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+            print("Canceled")
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email") {
+                print("Good")
+                getSession(isFacebook: true)
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 }
