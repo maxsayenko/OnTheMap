@@ -12,30 +12,22 @@ import FBSDKLoginKit
 
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+    var overlay: UIView?
+    
     @IBOutlet var emailText: UITextField!
     @IBOutlet var passwordText: UITextField!
     @IBOutlet var loginBtn: UIButton!
-    @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBAction func loginPressed(sender: UIButton) {
         getSession(isFacebook: false)
     }
     
     func setUIState(isEnabled isEnabled: Bool) {
-        spinner.hidden = isEnabled
-        emailText.enabled = isEnabled
-        passwordText.enabled = isEnabled
-        loginBtn.enabled = isEnabled
-        
-        if(isEnabled) {
-            spinner.stopAnimating()
-        } else {
-            spinner.startAnimating()
-        }
-        
+        overlay?.hidden = isEnabled
     }
     
     override func viewDidLoad() {
+        overlay = UIHelper.getLoadingState(view).overlay
         self.setUIState(isEnabled: true)
         
         if (FBSDKAccessToken.currentAccessToken() != nil) {
