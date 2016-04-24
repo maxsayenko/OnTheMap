@@ -27,11 +27,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidLoad() {
-        overlay = UIHelper.getLoadingState(view).overlay
-        self.setUIState(isEnabled: true)
-        
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            print("already logged in")
             // User is already logged in, do work such as go to next view controller.
             getSession(isFacebook: true)
         }
@@ -42,6 +38,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.readPermissions = ["public_profile", "email"]
             loginView.delegate = self
         }
+        
+        overlay = UIHelper.getLoadingState(view).overlay
+        self.setUIState(isEnabled: true)
     }
     
     func getSession(isFacebook isFacebook: Bool) {
@@ -98,27 +97,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     // Facebook Delegate Methods
 extension LoginViewController {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
         
         if ((error) != nil) {
-            print("ERROR")
             UIHelper.showErrorMessage(self, message: error.localizedDescription)
         }
         else if result.isCancelled {
             // Handle cancellations
-            print("Canceled")
+            UIHelper.showErrorMessage(self, message: "You have cancelled Facebook login")
         }
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email") {
-                print("Good")
                 getSession(isFacebook: true)
             }
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
     }
 }

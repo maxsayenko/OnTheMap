@@ -51,9 +51,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
-        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
-            print(self)
-        })
+        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {

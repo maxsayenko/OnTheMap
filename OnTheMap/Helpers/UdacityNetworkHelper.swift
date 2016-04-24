@@ -136,8 +136,6 @@ struct UdacityNetworkHelper {
         if(SharedModel.sharedInstance.isFacebook) {
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
-            completionHandler(isSuccessful: true, errorString: nil)
-            return
         }
         
         var headers: [String: String] = [String: String]()
@@ -247,8 +245,6 @@ extension UdacityNetworkHelper {
             completionHandler(user: nil, errorString: BAD_DATA)
             return
         }
-        
-        print(parsedData)
         
         // Got error response from Udacity. Terminate.
         if let error = parsedData["error"] as? String {
