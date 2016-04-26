@@ -8,10 +8,15 @@
 
 import Foundation
 
-struct SharedModel {
+class SharedModel {
     var students: [StudentInformation]?
     var user: UdacityUser?
     var isFacebook: Bool = false
     
-    static var sharedInstance = SharedModel()
+    static let sharedInstance = SharedModel()
+
+    // private init so it can't be created outside
+    private init() {
+        
+    }
 }
