@@ -24,8 +24,7 @@ class TableViewController: UITableViewController {
         UdacityNetworkHelper.logoutUdacity { (isSuccessful, errorString) -> Void in
             if(isSuccessful) {
                 performUIUpdatesOnMain({ () -> Void in
-                    let loginScreen = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
-                    self.presentViewController(loginScreen, animated: true, completion: nil)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
             }
         }

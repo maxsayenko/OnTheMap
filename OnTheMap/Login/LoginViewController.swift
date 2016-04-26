@@ -86,6 +86,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 SharedModel.sharedInstance.user?.lastName = userInfo!.lastName
                 
                 performUIUpdatesOnMain({ () -> Void in
+                    self.setUIState(isEnabled: true)
                     self.performSegueWithIdentifier("segueToMapTableView", sender: nil)
                 })
             }
