@@ -69,6 +69,12 @@ struct UdacityNetworkHelper {
                 }
             }
             
+            // Got error response from Udacity. Terminate.
+            if let error = parsedData["error"] as? String {
+                completionHandler(students: nil, errorString: error)
+                return
+            }
+            
             if let results = parsedData["results"] as! NSArray? {
                 let students = results.map({ (studentData) -> StudentInformation in
                     return StudentInformation(studentInfo: studentData as! NSDictionary)
