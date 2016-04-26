@@ -43,6 +43,9 @@ class TableViewController: UITableViewController {
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 UIHelper.showErrorMessage(self, message: errorMessage)
+                performUIUpdatesOnMain({ () -> Void in
+                    self.setUIState(isEnabled: true)
+                })
                 return
             }
             SharedModel.sharedInstance.students = students

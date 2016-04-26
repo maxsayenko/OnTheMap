@@ -50,6 +50,9 @@ class MapViewController: UIViewController {
         UdacityNetworkHelper.getStudentsData { (students, errorString) -> Void in
             if let errorMessage = errorString where errorString != nil {
                 UIHelper.showErrorMessage(self, message: errorMessage)
+                performUIUpdatesOnMain({ () -> Void in
+                    self.setUIState(isEnabled: true)
+                })
                 return
             }
             SharedModel.sharedInstance.students = students
@@ -83,19 +86,19 @@ class MapViewController: UIViewController {
             objectAnnotation.coordinate = pinLocation
             objectAnnotation.title = "\(info.firstName) \(info.lastName)"
             objectAnnotation.subtitle = info.mediaURL
-
+            
             return objectAnnotation
         }
-
+        
         mapView.addAnnotations(annotations)
     }
     
     func addPin(studentInformation info: StudentInformation) {
         guard let lat = info.latitude,
-              let long = info.longitude
-        else {
-            print("Error during dropping pin. Info = \(info)")
-            return;
+            let long = info.longitude
+            else {
+                print("Error during dropping pin. Info = \(info)")
+                return;
         }
         
         let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
